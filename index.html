@@ -447,7 +447,7 @@
                     };
                 }).filter(item => item.title && item.title.toLowerCase() !== 'title' && item.images.length > 0);
 
-                renderCards(portfolioData);
+                applyUrlFilter();
             } catch (error) {
                 console.error("Gagal mengambil data:", error);
             }
@@ -517,6 +517,48 @@
                     </div>
                 `;
             });
+        }
+
+        function applyUrlFilter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let rawCat = urlParams.get('cat') || urlParams.get('kategori') || urlParams.get('category');
+            
+            if (!rawCat && window.location.hash) {
+                rawCat = window.location.hash.replace('#', '');
+            }
+
+            const categoryAliases = {
+                'lanyard': 'idcard-lanyard',
+                'idcard': 'idcard-lanyard',
+                'feeds': 'feeds-carousel',
+                'carousel': 'feeds-carousel',
+                'ppt': 'ppt-design',
+                'presentasi': 'ppt-design',
+                'poster': 'poster-infografis',
+                'infografis': 'poster-infografis',
+                'booklet': 'booklet',
+                'modul': 'booklet',
+                'logo': 'logo-packaging',
+                'packaging': 'logo-packaging',
+                'menu': 'menu-design',
+                'it': 'it-system',
+                'system': 'it-system',
+                'video': 'video-editing',
+                'editing': 'video-editing',
+                'spss': 'olah-data',
+                'data': 'olah-data'
+            };
+
+            if (rawCat) {
+                const targetCat = categoryAliases[rawCat.toLowerCase()] || rawCat;
+                setFilter(targetCat);
+                setTimeout(() => {
+                    const katalogEl = document.getElementById('katalog');
+                    if (katalogEl) katalogEl.scrollIntoView({ behavior: 'smooth' });
+                }, 300);
+            } else {
+                renderCards(portfolioData);
+            }
         }
 
         function setFilter(cat) {
