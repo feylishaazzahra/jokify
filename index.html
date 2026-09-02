@@ -476,7 +476,7 @@
 
                 let coverHtml = '';
                 if (!isPdf) {
-                    coverHtml = `<img src="${coverImage}" alt="${item.title}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300">`;
+                    coverHtml = `<img src="${coverImage}" alt="${item.title}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300">`;
                 } else if (driveId) {
                     coverHtml = `<iframe src="https://drive.google.com/file/d/${driveId}/preview" class="w-full h-full border-0 pointer-events-none scale-105"></iframe>`;
                 } else {
@@ -491,7 +491,7 @@
                 grid.innerHTML += `
                     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                         <div>
-                            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-950 cursor-pointer flex items-center justify-center" onclick="openModal('${item.id}')">
+                            <div class="relative overflow-hidden h-64 sm:h-72 bg-slate-100 dark:bg-slate-950 cursor-pointer flex items-center justify-center" onclick="openModal('${item.id}')">
                                 ${coverHtml}
                                 <span class="absolute top-2 left-2 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md flex items-center gap-1 shadow-sm">
                                     ${item.images.some(isPdfUrl) ? '📄 PDF Document' : '📸 ' + slideCount + ' Gambar'}
