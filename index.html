@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Tailwind CSS CDN dengan Konfigurasi Brand Jokify -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -38,12 +38,13 @@
     <!-- ================= NAVBAR ================= -->
     <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
+            <!-- Logo dengan Rahasia Triple Click -->
+            <div id="logoTrigger" class="flex items-center gap-3 cursor-pointer select-none">
                 <img src="assets/logojokify.png" alt="Jokify Logo" class="h-10 sm:h-12 w-auto object-contain">
                 <span class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200">
                     Portfolio & Catalog
                 </span>
-            </a>
+            </div>
 
             <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
                 <a href="#about" class="hover:text-jokify-navy transition-colors">Tentang</a>
@@ -52,10 +53,18 @@
                 <a href="#alur" class="hover:text-jokify-navy transition-colors">Alur Kerja</a>
             </nav>
 
-            <a id="navWaBtn" href="#" target="_blank" class="bg-jokify-blue hover:bg-sky-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition-all shadow-sm active:scale-95 flex items-center gap-2">
-                <i class="fa-brands fa-whatsapp text-base"></i>
-                <span>Chat Admin WA</span>
-            </a>
+            <div class="flex items-center gap-2">
+                <!-- Tombol Admin Tambah Porto (Sembunyi secara Default / Hidden) -->
+                <button id="adminAddBtn" onclick="openAddModal()" class="hidden bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition-all shadow-sm flex items-center gap-1.5 animate-pulse">
+                    <i class="fa-solid fa-folder-plus text-xs text-jokify-amber"></i>
+                    <span>+ Tambah Porto</span>
+                </button>
+
+                <a id="navWaBtn" href="#" target="_blank" class="bg-jokify-blue hover:bg-sky-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition-all shadow-sm active:scale-95 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span class="hidden sm:inline">Chat Admin</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -150,12 +159,10 @@
                 <p class="text-xs sm:text-sm text-slate-500 mt-1">Pilih kategori spesifik atau ketik kata kunci di bawah.</p>
             </div>
 
-            <!-- Live Search Bar -->
             <div class="max-w-xl mx-auto mb-6">
                 <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Dulizzert, Evercurse, Waypoint, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
             </div>
 
-            <!-- Category Filter Pills (Kategori Spesifik) -->
             <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start sm:justify-center scrollbar-thin" id="filterContainer">
                 <button onclick="setFilter('all')" data-cat="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy text-white border-jokify-navy shadow-sm">⚡ Semua Karya</button>
                 <button onclick="setFilter('feeds-carousel')" data-cat="feeds-carousel" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📱 Design Feeds</button>
@@ -168,8 +175,12 @@
                 <button onclick="setFilter('olah-data')" data-cat="olah-data" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📊 Olah Data SPSS</button>
             </div>
 
-            <!-- Portfolio Cards Grid Container -->
-            <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+            <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <div class="col-span-full text-center py-12">
+                    <div class="inline-block w-8 h-8 border-4 border-jokify-blue border-t-transparent rounded-full animate-spin mb-3"></div>
+                    <p class="text-sm text-slate-500 font-medium">Memuat katalog portofolio...</p>
+                </div>
+            </div>
         </section>
 
         <!-- 3. WORK PROCESS -->
@@ -212,43 +223,98 @@
 
     </main>
 
-    <!-- ================= LIGHTBOX MODAL POP-UP ================= -->
+    <!-- ================= LIGHTBOX DETAIL MODAL POP-UP ================= -->
     <div id="detailModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeModal()">
         <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col" onclick="event.stopPropagation()">
-            <!-- Modal Header -->
             <div class="p-5 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 z-10">
                 <span id="modalEstTime" class="text-xs font-bold text-slate-500">⏱️ Est. Pengerjaan: -</span>
                 <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
             </div>
             
-            <!-- Modal Body -->
             <div class="p-6">
-                <!-- Main Large Image View -->
                 <div class="w-full bg-slate-100 rounded-2xl overflow-hidden mb-4 flex items-center justify-center border border-slate-200">
                     <img id="modalImage" src="" alt="Preview" class="max-h-[380px] w-auto object-contain">
                 </div>
-
-                <!-- Horizontal Thumbnail Strip -->
                 <div id="modalThumbnails" class="w-full flex items-center gap-2 overflow-x-auto pb-2 mb-4 scrollbar-thin"></div>
-
-                <!-- Text Metadata -->
                 <h3 id="modalTitle" class="text-xl font-extrabold text-jokify-navy">Judul Proyek</h3>
                 <p id="modalDesc" class="text-sm text-slate-600 mt-2 leading-relaxed">Deskripsi proyek...</p>
-                
                 <div class="mt-4">
                     <span class="text-xs font-bold text-slate-400 block uppercase tracking-wider mb-2">Tools Used:</span>
                     <div id="modalTools" class="flex flex-wrap gap-1.5"></div>
                 </div>
             </div>
 
-            <!-- Modal Footer -->
             <div class="p-5 border-t border-slate-100 bg-slate-50 rounded-b-3xl flex items-center justify-between">
                 <span class="text-xs text-slate-500">Fast delivery ready.</span>
                 <a id="modalWaBtn" href="#" target="_blank" class="bg-jokify-blue hover:bg-sky-700 text-white font-bold text-sm px-6 py-2.5 rounded-xl transition-all inline-flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-base"></i>
-                    Pesan via WhatsApp
+                    <i class="fa-brands fa-whatsapp text-base"></i> Pesan via WhatsApp
                 </a>
             </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL FORM TAMBAH PORTO (ADMIN) ================= -->
+    <div id="addModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeAddModal()">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white z-10">
+                <h3 class="font-extrabold text-lg text-jokify-navy flex items-center gap-2">
+                    <i class="fa-solid fa-folder-plus text-jokify-blue"></i> Tambah Portofolio Baru
+                </h3>
+                <button onclick="closeAddModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
+            </div>
+
+            <form id="addPortoForm" onsubmit="submitNewPorto(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Judul Karya / Proyek</label>
+                    <input type="text" id="addTitle" required placeholder="Contoh: Banner Event Lanyard" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Kategori</label>
+                    <select id="addCategory" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                        <option value="feeds-carousel|Design Feeds">📱 Design Feeds</option>
+                        <option value="idcard-lanyard|Lanyard & ID Card">🪪 Lanyard & ID Card</option>
+                        <option value="booklet|Booklet & Modul">📖 Booklet & Modul</option>
+                        <option value="logo-packaging|Logo & Packaging">🏷️ Logo & Packaging</option>
+                        <option value="menu-design|Menu Design">🍽️ Menu Design</option>
+                        <option value="it-system|IT & System">💻 IT & System</option>
+                        <option value="video-editing|Video Editing">🎬 Video Editing</option>
+                        <option value="olah-data|Olah Data SPSS">📊 Olah Data SPSS</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Upload File Foto (Bisa pilih multiple/banyak)</label>
+                    <input type="file" id="addFiles" multiple accept="image/*" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-jokify-blue file:text-white hover:file:bg-sky-700 cursor-pointer">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Tools Used (Pisah koma)</label>
+                        <input type="text" id="addTools" placeholder="Figma, Photoshop" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Est. Pengerjaan</label>
+                        <input type="text" id="addEstTime" placeholder="1-2 Hari" value="1-2 Hari" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Deskripsi Karya</label>
+                    <textarea id="addDesc" rows="3" placeholder="Jelaskan detail singkat proyek ini..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue"></textarea>
+                </div>
+
+                <div class="border-t border-slate-200 pt-3">
+                    <label class="block text-xs font-bold text-rose-600 mb-1">🔑 Password Admin</label>
+                    <input type="password" id="addPassword" required placeholder="Masukkan password admin..." class="w-full px-3.5 py-2.5 bg-rose-50 border border-rose-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-rose-400">
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" id="submitBtn" class="w-full bg-jokify-navy hover:bg-slate-800 text-white font-bold text-sm py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>Upload & Simpan Karya</span>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -260,153 +326,87 @@
         </div>
     </footer>
 
-    <!-- ================= JAVASCRIPT LOGIC & DATA ================= -->
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
-        // GANTI NOMOR WHATSAPP ADMIN DI SINI (Format: 628...)
         const PHONE_ADMIN = '6281234567890';
-
-        // DATA PORTOFOLIO DENGAN KATEGORISASI SPESIFIK
-        const portfolioData = [
-            // --- FEEDS & CAROUSEL ---
-            {
-                id: 'fomo',
-                title: 'FOMO Instagram Microblog Carousel Set',
-                category: 'feeds-carousel',
-                categoryLabel: 'Design Feeds',
-                images: [
-                    'assets/social-media/fomo-1.png',
-                    'assets/social-media/fomo-2.png',
-                    'assets/social-media/fomo-3.png',
-                    'assets/social-media/fomo-4.png',
-                    'assets/social-media/fomo-5.png',
-                    'assets/social-media/fomo-6.png'
-                ],
-                tools: ['Figma', 'Social Media Design'],
-                estTime: '1-2 Hari',
-                desc: 'Konten mikroblog 6 slide Instagram bertema FOMO dengan visual kontras dan alur baca terstruktur.'
-            },
-
-            // --- LANYARD & ID CARD ---
-            {
-                id: 'evercurse',
-                title: 'Evercurse Event Merchandise & ID Kit',
-                category: 'idcard-lanyard',
-                categoryLabel: 'Lanyard & ID Card',
-                images: [
-                    'assets/event-design/evercurse-mockup.png',
-                    'assets/event-design/evercurse-id-card.png',
-                    'assets/event-design/evercurse-lanyard.png'
-                ],
-                tools: ['Figma', 'Photoshop Mockup'],
-                estTime: '1-2 Hari',
-                desc: 'Set desain identitas acara terpadu mulai dari ID card panitia & peserta, tali lanyard, hingga mockup merchandise event.'
-            },
-
-            // --- BOOKLET & MODUL ---
-            {
-                id: 'training-legislatif',
-                title: 'Training Legislatif Booklet & Print Mockup',
-                category: 'booklet',
-                categoryLabel: 'Booklet & Modul',
-                images: [
-                    'assets/print-design/training-legislatif-cover.png',
-                    'assets/print-design/training-legislatif-mockup1.png',
-                    'assets/print-design/training-legislatif-mockup2.png'
-                ],
-                tools: ['Figma', 'InDesign', 'PDF Layout'],
-                estTime: '1-2 Hari',
-                desc: 'Tata letak modul cetak acara Training Legislatif dengan hirarki teks jernih dan visualisasi mockup cetak realistis.'
-            },
-
-            // --- LOGO & PACKAGING ---
-            {
-                id: 'dulizzert',
-                title: 'Dulizzert Logo & Packaging Mockup',
-                category: 'logo-packaging',
-                categoryLabel: 'Logo & Packaging',
-                images: [
-                    'assets/branding/dulizzert-logo.png',
-                    'assets/branding/dulizzert-mockup.png'
-                ],
-                tools: ['Figma', 'Illustrator', 'Mockup Design'],
-                estTime: '1-2 Hari',
-                desc: 'Desain logo identitas visual dessert shop Dulizzert lengkap dengan ikon sago, slogan "Dreamy, Yummy, Dessert", serta mockup kemasan produk.'
-            },
-
-            // --- MENU DESIGN ---
-            {
-                id: 'waypoint',
-                title: 'Waypoint Restaurant Culinary Menu Design',
-                category: 'menu-design',
-                categoryLabel: 'Menu Design',
-                images: [
-                    'assets/print-design/waypoint-menu1.png',
-                    'assets/print-design/waypoint-menu2.png',
-                    'assets/print-design/waypoint-menu3.png'
-                ],
-                tools: ['Figma', 'Illustrator'],
-                estTime: '1-2 Hari',
-                desc: 'Desain buku menu restoran Waypoint multi-halaman dengan tatanan visual makanan yang bersih dan elegan.'
-            },
-
-            // --- IT & SYSTEM ---
-            {
-                id: 'dfd-clinic',
-                title: 'Diagram DFD Level 0 & Level 1 System Clinic',
-                category: 'it-system',
-                categoryLabel: 'IT & System',
-                images: [
-                    'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80'
-                ],
-                tools: ['Draw.io', 'Visio', 'MariaDB / SQL'],
-                estTime: '1 Hari',
-                desc: 'Perancangan alur data terstruktur lengkap dengan entitas luar, pemrosesan data, dan spesifikasi tabel database.'
-            },
-            {
-                id: 'cpp-structure',
-                title: 'Program C++ Structure Data & Array Buffer',
-                category: 'it-system',
-                categoryLabel: 'IT & System',
-                images: [
-                    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80'
-                ],
-                tools: ['C++', 'Code::Blocks', 'VS Code'],
-                estTime: '1 Hari',
-                desc: 'Kodingan bersih terstruktur lengkap dengan dokumentasi komentar per fungsi dan efisiensi memori.'
-            },
-
-            // --- VIDEO EDITING ---
-            {
-                id: 'video-reels',
-                title: 'Editing Short Video Reels / TikTok Event',
-                category: 'video-editing',
-                categoryLabel: 'Video Editing',
-                images: [
-                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80'
-                ],
-                tools: ['CapCut Pro', 'Premiere Pro'],
-                estTime: '1 Hari',
-                desc: 'Editing video durasi singkat dengan transisi dinamis, penambahan subtitle otomatis, dan sinkronisasi audio.'
-            },
-
-            // --- OLAH DATA SPSS ---
-            {
-                id: 'spss-data',
-                title: 'Olah Data SPSS Uji Regresi & Validitas',
-                category: 'olah-data',
-                categoryLabel: 'Olah Data SPSS',
-                images: [
-                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
-                ],
-                tools: ['SPSS', 'Excel', 'Data Interpretation'],
-                estTime: '1-2 Hari',
-                desc: 'Pengolahan data kuesioner lengkap dengan grafik pembacaan, interpretasi hasil validitas dan reliabilitas.'
-            }
-        ];
-
+        const SPREADSHEET_ID = '1SqMH_thDYrrNWXTu-8URyK9CcGez0rMDRwY161Sffrw';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyaBW-bMhxjnmAlPuKfLUfiSgjyY7yet9D5NUedW-JSDjGlCmxZbrNRhZzGbP5cw3C/exec';
+        
+        let portfolioData = [];
         let currentCategory = 'all';
 
-        // Render Card Grid
+        // --- SISTEM RAHASIA BUKA TOMBOL ADMIN ---
+        function checkAdminAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const isParamAdmin = urlParams.get('admin') === 'true';
+            const isHashAdmin = window.location.hash === '#admin';
+            
+            if (isParamAdmin || isHashAdmin) {
+                document.getElementById('adminAddBtn').classList.remove('hidden');
+            }
+        }
+
+        // Rahasia Tambahan: Klik Logo Jokify 3x Berturut-turut untuk Munculkan Tombol
+        let logoClickCount = 0;
+        let logoClickTimer;
+        document.getElementById('logoTrigger').addEventListener('click', () => {
+            logoClickCount++;
+            clearTimeout(logoClickTimer);
+            if (logoClickCount >= 3) {
+                document.getElementById('adminAddBtn').classList.toggle('hidden');
+                logoClickCount = 0;
+            } else {
+                logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 1000);
+            }
+        });
+
+        function processImageUrl(url) {
+            if (!url) return '';
+            const cleanedUrl = url.trim();
+            const driveMatch = cleanedUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+            if (driveMatch && driveMatch[1]) {
+                return `https://lh3.googleusercontent.com/d/${driveMatch[1]}`;
+            }
+            return cleanedUrl;
+        }
+
+        async function fetchFromGoogleSheets() {
+            const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                const jsonString = text.substring(47, text.length - 2);
+                const json = JSON.parse(jsonString);
+                
+                const columns = json.table.cols.map(c => (c && c.label) ? c.label.toLowerCase().trim() : '');
+                
+                portfolioData = json.table.rows.map(row => {
+                    let item = {};
+                    row.c.forEach((cell, idx) => {
+                        const colName = columns[idx];
+                        if (colName) {
+                            item[colName] = (cell && cell.v !== null && cell.v !== undefined) ? String(cell.v) : '';
+                        }
+                    });
+
+                    return {
+                        id: item.id || 'item-' + Math.random().toString(36).substring(2, 7),
+                        title: item.title || 'Untitled Project',
+                        category: item.category || 'all',
+                        categoryLabel: item.categorylabel || item.category || 'Portfolio',
+                        images: item.images ? item.images.split(',').map(processImageUrl) : [],
+                        tools: item.tools ? item.tools.split(',').map(t => t.trim()) : [],
+                        estTime: item.esttime || '1-2 Hari',
+                        desc: item.desc || ''
+                    };
+                }).filter(item => item.title && item.images.length > 0);
+
+                renderCards(portfolioData);
+            } catch (error) {
+                console.error("Gagal mengambil data:", error);
+            }
+        }
+
         function renderCards(data) {
             const grid = document.getElementById('portfolioGrid');
             grid.innerHTML = '';
@@ -415,9 +415,6 @@
                 grid.innerHTML = `
                     <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200">
                         <p class="text-slate-500 text-sm">Contoh karya tidak ditemukan.</p>
-                        <a href="https://wa.me/${PHONE_ADMIN}?text=Halo%20Jokify!%20Aku%20mau%20request%20custom" target="_blank" class="inline-block mt-3 bg-jokify-amber text-slate-950 text-xs font-bold px-4 py-2 rounded-xl">
-                            Diskusi Custom Order
-                        </a>
                     </div>
                 `;
                 return;
@@ -433,7 +430,7 @@
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                         <div>
                             <div class="relative overflow-hidden aspect-video bg-slate-100 cursor-pointer" onclick="openModal('${item.id}')">
-                                <img src="${coverImage}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="${coverImage}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x400?text=Image+Not+Found'">
                                 <span class="absolute top-2 left-2 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md flex items-center gap-1 shadow-sm">
                                     📸 ${slideCount} ${slideCount > 1 ? 'Foto' : 'Gambar'}
                                 </span>
@@ -460,7 +457,6 @@
             });
         }
 
-        // Filter Function
         function setFilter(cat) {
             currentCategory = cat;
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -473,7 +469,6 @@
             filterAndSearch();
         }
 
-        // Live Search Function
         document.getElementById('searchInput').addEventListener('input', filterAndSearch);
 
         function filterAndSearch() {
@@ -488,7 +483,6 @@
             renderCards(filtered);
         }
 
-        // Modal Functionality with Multi-Photo Thumbnail Switcher
         function openModal(id) {
             const item = portfolioData.find(p => p.id === id);
             if(!item) return;
@@ -498,7 +492,6 @@
             document.getElementById('modalImage').src = item.images[0];
             document.getElementById('modalEstTime').innerText = `⏱️ Est. Pengerjaan: ${item.estTime}`;
             
-            // Build Thumbnail Strip
             const thumbContainer = document.getElementById('modalThumbnails');
             thumbContainer.innerHTML = '';
 
@@ -513,13 +506,8 @@
                 });
             }
 
-            // Build Tool Pills
             document.getElementById('modalTools').innerHTML = item.tools.map(t => `<span class="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-semibold inline-block mr-1 mb-1">${t}</span>`).join('');
-
-            // Set Order Link
-            const waMessage = encodeURIComponent(`Halo Jokify! Aku tertarik pesan jasa seperti contoh "${item.title}".`);
-            document.getElementById('modalWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${waMessage}`;
-
+            document.getElementById('modalWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${encodeURIComponent(`Halo Jokify! Aku tertarik pesan jasa seperti contoh "${item.title}".`)}`;
             document.getElementById('detailModal').classList.remove('hidden');
         }
 
@@ -533,18 +521,75 @@
             }
         }
 
-        function closeModal() {
-            document.getElementById('detailModal').classList.add('hidden');
+        function closeModal() { document.getElementById('detailModal').classList.add('hidden'); }
+        function openAddModal() { document.getElementById('addModal').classList.remove('hidden'); }
+        function closeAddModal() { document.getElementById('addModal').classList.add('hidden'); }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve({ name: file.name, type: file.type, base64: reader.result });
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
         }
 
-        // Initialize Links & Render Default Cards
+        async function submitNewPorto(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Mengupload ke Google Drive...`;
+
+            try {
+                const title = document.getElementById('addTitle').value;
+                const catVal = document.getElementById('addCategory').value.split('|');
+                const category = catVal[0];
+                const categoryLabel = catVal[1];
+                const tools = document.getElementById('addTools').value;
+                const estTime = document.getElementById('addEstTime').value;
+                const desc = document.getElementById('addDesc').value;
+                const password = document.getElementById('addPassword').value;
+
+                const fileInput = document.getElementById('addFiles');
+                const filePromises = Array.from(fileInput.files).map(fileToBase64);
+                const files = await Promise.all(filePromises);
+
+                const payload = {
+                    password, title, category, categoryLabel, tools, estTime, desc, files
+                };
+
+                const res = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await res.json();
+                if (result.result === 'success') {
+                    alert("Berhasil! Portofolio baru telah tersimpan & diupload ke Drive!");
+                    closeAddModal();
+                    document.getElementById('addPortoForm').reset();
+                    fetchFromGoogleSheets();
+                } else {
+                    alert("Gagal: " + (result.message || "Terjadi kesalahan."));
+                }
+            } catch (err) {
+                alert("Terjadi kesalahan saat upload. Pastikan SCRIPT_URL sudah benar.");
+                console.error(err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Upload & Simpan Karya</span>`;
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            checkAdminAccess();
+
             const defaultWaMsg = encodeURIComponent("Halo Jokify! Aku mau konsultasi pengerjaan tugas/proyek.");
             document.getElementById('navWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${defaultWaMsg}`;
             document.getElementById('ctaWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${defaultWaMsg}`;
             document.getElementById('heroCustomBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${encodeURIComponent("Halo Jokify! Aku mau request custom order.")}`;
             
-            renderCards(portfolioData);
+            fetchFromGoogleSheets();
         });
     </script>
 </body>
