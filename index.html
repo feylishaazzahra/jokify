@@ -101,11 +101,11 @@
                     <div class="text-3xl mb-3">🎨</div>
                     <h3 class="font-bold text-lg text-jokify-navy mb-3">Design & Visuals</h3>
                     <ul class="space-y-2 text-xs text-slate-600">
-                        <li>• UI/UX Layouting (Figma)</li>
                         <li>• IG Feeds & Microblog Carousel</li>
+                        <li>• Lanyard, ID Card & Event Kit</li>
                         <li>• Booklet, Modul & E-Book</li>
-                        <li>• Banner & Poster Event</li>
                         <li>• Logo & Brand Identity</li>
+                        <li>• Desain Menu Restoran/Kuliner</li>
                     </ul>
                 </div>
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
@@ -147,7 +147,7 @@
             <div class="text-center max-w-2xl mx-auto mb-8">
                 <span class="text-xs font-bold text-jokify-orange tracking-wider uppercase">Interactive Catalog</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy mt-1">Galeri & Contoh Portofolio</h2>
-                <p class="text-xs sm:text-sm text-slate-500 mt-1">Cari berdasarkan kata kunci atau pilih filter kategori di bawah.</p>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Pilih kategori spesifik atau ketik kata kunci di bawah.</p>
             </div>
 
             <!-- Live Search Bar -->
@@ -155,13 +155,17 @@
                 <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Dulizzert, Evercurse, Waypoint, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
             </div>
 
-            <!-- Category Filter Pills -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start sm:justify-center" id="filterContainer">
+            <!-- Category Filter Pills (Kategori Spesifik) -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start sm:justify-center scrollbar-thin" id="filterContainer">
                 <button onclick="setFilter('all')" data-cat="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy text-white border-jokify-navy shadow-sm">⚡ Semua Karya</button>
-                <button onclick="setFilter('design')" data-cat="design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🎨 Design & Visuals</button>
-                <button onclick="setFilter('it')" data-cat="it" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">💻 IT & System</button>
-                <button onclick="setFilter('editing')" data-cat="editing" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🎬 Media & Editing</button>
-                <button onclick="setFilter('data')" data-cat="data" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📊 Data & Academic</button>
+                <button onclick="setFilter('feeds-carousel')" data-cat="feeds-carousel" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📱 Design Feeds</button>
+                <button onclick="setFilter('idcard-lanyard')" data-cat="idcard-lanyard" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🪪 Lanyard & ID Card</button>
+                <button onclick="setFilter('booklet')" data-cat="booklet" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📖 Booklet & Modul</button>
+                <button onclick="setFilter('logo-packaging')" data-cat="logo-packaging" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🏷️ Logo & Packaging</button>
+                <button onclick="setFilter('menu-design')" data-cat="menu-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🍽️ Menu Design</button>
+                <button onclick="setFilter('it-system')" data-cat="it-system" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">💻 IT & System</button>
+                <button onclick="setFilter('video-editing')" data-cat="video-editing" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🎬 Video Editing</button>
+                <button onclick="setFilter('olah-data')" data-cat="olah-data" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📊 Olah Data SPSS</button>
             </div>
 
             <!-- Portfolio Cards Grid Container -->
@@ -259,77 +263,16 @@
     <!-- ================= JAVASCRIPT LOGIC & DATA ================= -->
     <script>
         // GANTI NOMOR WHATSAPP ADMIN DI SINI (Format: 628...)
-        const PHONE_ADMIN = '6287888922537';
+        const PHONE_ADMIN = '6281234567890';
 
-        // DATA PORTOFOLIO KARYA JOKIFY
+        // DATA PORTOFOLIO DENGAN KATEGORISASI SPESIFIK
         const portfolioData = [
-            // --- BRANDING ---
-            {
-                id: 'dulizzert',
-                title: 'Dulizzert Logo & Packaging Mockup',
-                category: 'design',
-                categoryLabel: 'Design & Visuals',
-                images: [
-                    'assets/branding/dulizzert-logo.png',
-                    'assets/branding/dulizzert-mockup.png'
-                ],
-                tools: ['Figma', 'Illustrator', 'Mockup Design'],
-                estTime: '1-2 Hari',
-                desc: 'Desain logo identitas visual dessert shop Dulizzert lengkap dengan ikon sago, slogan "Dreamy, Yummy, Dessert", serta mockup kemasan produk.'
-            },
-
-            // --- EVENT DESIGN ---
-            {
-                id: 'evercurse',
-                title: 'Evercurse Event Merchandise & ID Kit',
-                category: 'design',
-                categoryLabel: 'Design & Visuals',
-                images: [
-                    'assets/event-design/evercurse-mockup.png',
-                    'assets/event-design/evercurse-id-card.png',
-                    'assets/event-design/evercurse-lanyard.png'
-                ],
-                tools: ['Figma', 'Photoshop Mockup'],
-                estTime: '1-2 Hari',
-                desc: 'Set desain identitas acara terpadu mulai dari ID card panitia & peserta, tali lanyard, hingga mockup merchandise event.'
-            },
-
-            // --- PRINT DESIGN ---
-            {
-                id: 'training-legislatif',
-                title: 'Training Legislatif Booklet & Print Mockup',
-                category: 'design',
-                categoryLabel: 'Design & Visuals',
-                images: [
-                    'assets/print-design/training-legislatif-cover.png',
-                    'assets/print-design/training-legislatif-mockup1.png',
-                    'assets/print-design/training-legislatif-mockup2.png'
-                ],
-                tools: ['Figma', 'InDesign', 'PDF Layout'],
-                estTime: '1-2 Hari',
-                desc: 'Tata letak modul cetak acara Training Legislatif dengan hirarki teks jernih dan visualisasi mockup cetak realistis.'
-            },
-            {
-                id: 'waypoint',
-                title: 'Waypoint Restaurant Culinary Menu Design',
-                category: 'design',
-                categoryLabel: 'Design & Visuals',
-                images: [
-                    'assets/print-design/waypoint-menu1.png',
-                    'assets/print-design/waypoint-menu2.png',
-                    'assets/print-design/waypoint-menu3.png'
-                ],
-                tools: ['Figma', 'Illustrator'],
-                estTime: '1-2 Hari',
-                desc: 'Desain buku menu restoran Waypoint multi-halaman dengan tatanan visual makanan yang bersih dan elegan.'
-            },
-
-            // --- SOCIAL MEDIA ---
+            // --- FEEDS & CAROUSEL ---
             {
                 id: 'fomo',
                 title: 'FOMO Instagram Microblog Carousel Set',
-                category: 'design',
-                categoryLabel: 'Design & Visuals',
+                category: 'feeds-carousel',
+                categoryLabel: 'Design Feeds',
                 images: [
                     'assets/social-media/fomo-1.png',
                     'assets/social-media/fomo-2.png',
@@ -343,11 +286,74 @@
                 desc: 'Konten mikroblog 6 slide Instagram bertema FOMO dengan visual kontras dan alur baca terstruktur.'
             },
 
+            // --- LANYARD & ID CARD ---
+            {
+                id: 'evercurse',
+                title: 'Evercurse Event Merchandise & ID Kit',
+                category: 'idcard-lanyard',
+                categoryLabel: 'Lanyard & ID Card',
+                images: [
+                    'assets/event-design/evercurse-mockup.png',
+                    'assets/event-design/evercurse-id-card.png',
+                    'assets/event-design/evercurse-lanyard.png'
+                ],
+                tools: ['Figma', 'Photoshop Mockup'],
+                estTime: '1-2 Hari',
+                desc: 'Set desain identitas acara terpadu mulai dari ID card panitia & peserta, tali lanyard, hingga mockup merchandise event.'
+            },
+
+            // --- BOOKLET & MODUL ---
+            {
+                id: 'training-legislatif',
+                title: 'Training Legislatif Booklet & Print Mockup',
+                category: 'booklet',
+                categoryLabel: 'Booklet & Modul',
+                images: [
+                    'assets/print-design/training-legislatif-cover.png',
+                    'assets/print-design/training-legislatif-mockup1.png',
+                    'assets/print-design/training-legislatif-mockup2.png'
+                ],
+                tools: ['Figma', 'InDesign', 'PDF Layout'],
+                estTime: '1-2 Hari',
+                desc: 'Tata letak modul cetak acara Training Legislatif dengan hirarki teks jernih dan visualisasi mockup cetak realistis.'
+            },
+
+            // --- LOGO & PACKAGING ---
+            {
+                id: 'dulizzert',
+                title: 'Dulizzert Logo & Packaging Mockup',
+                category: 'logo-packaging',
+                categoryLabel: 'Logo & Packaging',
+                images: [
+                    'assets/branding/dulizzert-logo.png',
+                    'assets/branding/dulizzert-mockup.png'
+                ],
+                tools: ['Figma', 'Illustrator', 'Mockup Design'],
+                estTime: '1-2 Hari',
+                desc: 'Desain logo identitas visual dessert shop Dulizzert lengkap dengan ikon sago, slogan "Dreamy, Yummy, Dessert", serta mockup kemasan produk.'
+            },
+
+            // --- MENU DESIGN ---
+            {
+                id: 'waypoint',
+                title: 'Waypoint Restaurant Culinary Menu Design',
+                category: 'menu-design',
+                categoryLabel: 'Menu Design',
+                images: [
+                    'assets/print-design/waypoint-menu1.png',
+                    'assets/print-design/waypoint-menu2.png',
+                    'assets/print-design/waypoint-menu3.png'
+                ],
+                tools: ['Figma', 'Illustrator'],
+                estTime: '1-2 Hari',
+                desc: 'Desain buku menu restoran Waypoint multi-halaman dengan tatanan visual makanan yang bersih dan elegan.'
+            },
+
             // --- IT & SYSTEM ---
             {
                 id: 'dfd-clinic',
                 title: 'Diagram DFD Level 0 & Level 1 System Clinic',
-                category: 'it',
+                category: 'it-system',
                 categoryLabel: 'IT & System',
                 images: [
                     'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80'
@@ -359,7 +365,7 @@
             {
                 id: 'cpp-structure',
                 title: 'Program C++ Structure Data & Array Buffer',
-                category: 'it',
+                category: 'it-system',
                 categoryLabel: 'IT & System',
                 images: [
                     'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80'
@@ -369,12 +375,12 @@
                 desc: 'Kodingan bersih terstruktur lengkap dengan dokumentasi komentar per fungsi dan efisiensi memori.'
             },
 
-            // --- MEDIA & EDITING ---
+            // --- VIDEO EDITING ---
             {
                 id: 'video-reels',
                 title: 'Editing Short Video Reels / TikTok Event',
-                category: 'editing',
-                categoryLabel: 'Media & Editing',
+                category: 'video-editing',
+                categoryLabel: 'Video Editing',
                 images: [
                     'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80'
                 ],
@@ -383,12 +389,12 @@
                 desc: 'Editing video durasi singkat dengan transisi dinamis, penambahan subtitle otomatis, dan sinkronisasi audio.'
             },
 
-            // --- DATA & ACADEMIC ---
+            // --- OLAH DATA SPSS ---
             {
                 id: 'spss-data',
                 title: 'Olah Data SPSS Uji Regresi & Validitas',
-                category: 'data',
-                categoryLabel: 'Data & Academic',
+                category: 'olah-data',
+                categoryLabel: 'Olah Data SPSS',
                 images: [
                     'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
                 ],
