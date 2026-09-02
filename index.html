@@ -147,10 +147,10 @@
                     <div class="text-3xl mb-3">🎬</div>
                     <h3 class="font-bold text-lg text-jokify-navy dark:text-white mb-3">Media & Editing</h3>
                     <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
+                        <li>• Design Slide Presentasi PPT</li>
                         <li>• Video Shorts / TikTok / Reels</li>
                         <li>• CapCut Pro & Premiere Pro</li>
                         <li>• Foto Retouching & Mockup</li>
-                        <li>• Design Slide Presentasi PPT</li>
                     </ul>
                 </div>
                 <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
@@ -175,12 +175,13 @@
             </div>
 
             <div class="max-w-xl mx-auto mb-6">
-                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Dulizzert, Evercurse, Waypoint, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
+                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Dulizzert, Evercurse, Waypoint, DFD, SPSS, PPT..." class="w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
             </div>
 
             <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start sm:justify-center scrollbar-thin" id="filterContainer">
                 <button onclick="setFilter('all')" data-cat="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy dark:bg-jokify-blue text-white border-jokify-navy dark:border-jokify-blue shadow-sm">⚡ Semua Karya</button>
                 <button onclick="setFilter('feeds-carousel')" data-cat="feeds-carousel" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📱 Design Feeds</button>
+                <button onclick="setFilter('ppt-design')" data-cat="ppt-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📊 Slide Presentasi PPT</button>
                 <button onclick="setFilter('poster-infografis')" data-cat="poster-infografis" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🖼️ Poster & Infografis</button>
                 <button onclick="setFilter('idcard-lanyard')" data-cat="idcard-lanyard" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🪪 Lanyard & ID Card</button>
                 <button onclick="setFilter('booklet')" data-cat="booklet" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📖 Booklet & Modul</button>
@@ -288,13 +289,14 @@
             <form id="addPortoForm" onsubmit="submitNewPorto(event)" class="p-6 space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Judul Karya / Proyek</label>
-                    <input type="text" id="addTitle" required placeholder="Contoh: Modul E-Book Panduan" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                    <input type="text" id="addTitle" required placeholder="Contoh: PPT Presentasi Bisnis Plan" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Pilih Kategori</label>
                     <select id="addCategory" required class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                         <option value="feeds-carousel|Design Feeds">📱 Design Feeds</option>
+                        <option value="ppt-design|Slide Presentasi PPT">📊 Slide Presentasi PPT</option>
                         <option value="poster-infografis|Poster & Infografis">🖼️ Poster & Infografis</option>
                         <option value="idcard-lanyard|Lanyard & ID Card">🪪 Lanyard & ID Card</option>
                         <option value="booklet|Booklet & Modul">📖 Booklet & Modul</option>
@@ -314,7 +316,7 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Tools Used (Pisah koma)</label>
-                        <input type="text" id="addTools" placeholder="Figma, PDF Layout" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                        <input type="text" id="addTools" placeholder="Canva, PowerPoint, Figma" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Est. Pengerjaan</label>
