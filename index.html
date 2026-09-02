@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jokify — Turning Ideas into Pixel-Perfect Solutions</title>
     
-    <!-- Favicon (Logo Tab Browser) -->
-    <link rel="icon" type="image/png" href="assets/logojjokify.png">
+    <!-- Favicon Dynamic (Dark/Light System Theme) -->
+    <link rel="icon" type="image/png" href="assets/logojjokify-terang.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="assets/logojjokify.png" media="(prefers-color-scheme: dark)">
     <link rel="apple-touch-icon" href="assets/logojjokify.png">
     
     <!-- Google Fonts & FontAwesome CDN -->
@@ -19,6 +20,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'media',
             theme: {
                 extend: {
                     fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
@@ -37,10 +39,10 @@
         }
     </script>
 </head>
-<body class="bg-jokify-grayBg text-jokify-navy font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-jokify-blue selection:text-white">
+<body class="bg-jokify-grayBg dark:bg-slate-950 text-jokify-navy dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-jokify-blue selection:text-white transition-colors duration-300">
 
     <!-- ================= NAVBAR ================= -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div id="logoTrigger" class="flex items-center gap-3 cursor-pointer select-none">
                 <!-- Dynamic Logo (Dark/Light Mode Detection) -->
@@ -49,20 +51,20 @@
                     <img src="assets/logojokify.png" alt="Jokify Logo" class="h-10 sm:h-12 w-auto object-contain">
                 </picture>
 
-                <span class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200">
+                <span class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
                     Portfolio & Catalog
                 </span>
             </div>
 
-            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
-                <a href="#about" class="hover:text-jokify-navy transition-colors">Tentang</a>
-                <a href="#skills" class="hover:text-jokify-navy transition-colors">Layanan</a>
-                <a href="#katalog" class="hover:text-jokify-navy transition-colors">Katalog Works</a>
-                <a href="#alur" class="hover:text-jokify-navy transition-colors">Alur Kerja</a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                <a href="#about" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Tentang</a>
+                <a href="#skills" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Layanan</a>
+                <a href="#katalog" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Katalog Works</a>
+                <a href="#alur" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Alur Kerja</a>
             </nav>
 
             <div class="flex items-center gap-2">
-                <button id="adminAddBtn" onclick="openAddModal()" class="hidden bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition-all shadow-sm flex items-center gap-1.5 animate-pulse">
+                <button id="adminAddBtn" onclick="openAddModal()" class="hidden bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition-all shadow-sm flex items-center gap-1.5 animate-pulse border border-slate-700">
                     <i class="fa-solid fa-folder-plus text-xs text-jokify-amber"></i>
                     <span>+ Tambah Porto</span>
                 </button>
@@ -76,30 +78,30 @@
     </header>
 
     <!-- ================= HERO SECTION ================= -->
-    <section id="about" class="bg-white border-b border-slate-200 py-12 md:py-16 scroll-mt-20">
+    <section id="about" class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-12 md:py-16 scroll-mt-20 transition-colors">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold mb-6 border border-slate-200">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold mb-6 border border-slate-200 dark:border-slate-700">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Turning Ideas into Pixel-Perfect Solutions</span>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-jokify-navy">
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-jokify-navy dark:text-white">
                 Solusi Cepat Tugas <span class="text-jokify-blue">IT</span>, <span class="text-jokify-orange">Desain</span>, <span class="text-jokify-teal">Editing</span> & <span class="text-jokify-amber">Data</span>
             </h1>
 
-            <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
                 Jokify mempermudah kamu menemukan referensi karya dan pemesanan eksekusi cepat dengan hasil rapi, respon cepat, serta alur tanpa perantara yang rumit.
             </p>
 
             <div class="mt-4">
-                <a href="https://instagram.com/jokify_" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 transition-all text-xs font-bold shadow-sm active:scale-95">
+                <a href="https://instagram.com/jokify_" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-900/60 transition-all text-xs font-bold shadow-sm active:scale-95">
                     <i class="fa-brands fa-instagram text-base text-pink-500"></i>
                     <span>Cek testi di highlight instagram jokify yuk 👉 <span class="underline decoration-rose-400 font-extrabold">jokify_</span></span>
                 </a>
             </div>
 
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a href="#katalog" class="w-full sm:w-auto bg-jokify-navy hover:bg-slate-800 text-white font-bold text-sm px-6 py-3.5 rounded-xl transition-all shadow-md">
+                <a href="#katalog" class="w-full sm:w-auto bg-jokify-navy dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold text-sm px-6 py-3.5 rounded-xl transition-all shadow-md">
                     Eksplorasi Katalog Works
                 </a>
                 <a id="heroCustomBtn" href="#" target="_blank" class="w-full sm:w-auto bg-jokify-amber hover:bg-amber-400 text-slate-950 font-bold text-sm px-6 py-3.5 rounded-xl transition-all">
@@ -116,14 +118,14 @@
         <section id="skills" class="scroll-mt-24">
             <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-xs font-bold text-jokify-teal tracking-wider uppercase">Services & Expertise</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy mt-1">Bidang Keahlian Jokify</h2>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy dark:text-white mt-1">Bidang Keahlian Jokify</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
                     <div class="text-3xl mb-3">🎨</div>
-                    <h3 class="font-bold text-lg text-jokify-navy mb-3">Design & Visuals</h3>
-                    <ul class="space-y-2 text-xs text-slate-600">
+                    <h3 class="font-bold text-lg text-jokify-navy dark:text-white mb-3">Design & Visuals</h3>
+                    <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                         <li>• IG Feeds & Microblog Carousel</li>
                         <li>• Lanyard, ID Card & Event Kit</li>
                         <li>• Booklet, Modul & E-Book</li>
@@ -131,10 +133,10 @@
                         <li>• Desain Menu Restoran/Kuliner</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
                     <div class="text-3xl mb-3">💻</div>
-                    <h3 class="font-bold text-lg text-jokify-navy mb-3">IT & Software Solutions</h3>
-                    <ul class="space-y-2 text-xs text-slate-600">
+                    <h3 class="font-bold text-lg text-jokify-navy dark:text-white mb-3">IT & Software Solutions</h3>
+                    <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                         <li>• Web Development (Frontend)</li>
                         <li>• Tugas Koding (C/C++, HTML/CSS/JS)</li>
                         <li>• Database & SQL Scripting</li>
@@ -142,20 +144,20 @@
                         <li>• Riset System Architecture</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
                     <div class="text-3xl mb-3">🎬</div>
-                    <h3 class="font-bold text-lg text-jokify-navy mb-3">Media & Editing</h3>
-                    <ul class="space-y-2 text-xs text-slate-600">
+                    <h3 class="font-bold text-lg text-jokify-navy dark:text-white mb-3">Media & Editing</h3>
+                    <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                         <li>• Video Shorts / TikTok / Reels</li>
                         <li>• CapCut Pro & Premiere Pro</li>
                         <li>• Foto Retouching & Mockup</li>
                         <li>• Design Slide Presentasi PPT</li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
                     <div class="text-3xl mb-3">📊</div>
-                    <h3 class="font-bold text-lg text-jokify-navy mb-3">Data & Academic Support</h3>
-                    <ul class="space-y-2 text-xs text-slate-600">
+                    <h3 class="font-bold text-lg text-jokify-navy dark:text-white mb-3">Data & Academic Support</h3>
+                    <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                         <li>• Formatting Dokumen Word/PDF</li>
                         <li>• Olah Data SPSS & Validitas</li>
                         <li>• Microsoft Excel & Formula</li>
@@ -169,30 +171,30 @@
         <section id="katalog" class="scroll-mt-24">
             <div class="text-center max-w-2xl mx-auto mb-8">
                 <span class="text-xs font-bold text-jokify-orange tracking-wider uppercase">Interactive Catalog</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy mt-1">Galeri & Contoh Portofolio</h2>
-                <p class="text-xs sm:text-sm text-slate-500 mt-1">Pilih kategori spesifik atau ketik kata kunci di bawah.</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy dark:text-white mt-1">Galeri & Contoh Portofolio</h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Pilih kategori spesifik atau ketik kata kunci di bawah.</p>
             </div>
 
             <div class="max-w-xl mx-auto mb-6">
-                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Dulizzert, Evercurse, Waypoint, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
+                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Dulizzert, Evercurse, Waypoint, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
             </div>
 
             <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start sm:justify-center scrollbar-thin" id="filterContainer">
-                <button onclick="setFilter('all')" data-cat="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy text-white border-jokify-navy shadow-sm">⚡ Semua Karya</button>
-                <button onclick="setFilter('feeds-carousel')" data-cat="feeds-carousel" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📱 Design Feeds</button>
-                <button onclick="setFilter('idcard-lanyard')" data-cat="idcard-lanyard" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🪪 Lanyard & ID Card</button>
-                <button onclick="setFilter('booklet')" data-cat="booklet" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📖 Booklet & Modul</button>
-                <button onclick="setFilter('logo-packaging')" data-cat="logo-packaging" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🏷️ Logo & Packaging</button>
-                <button onclick="setFilter('menu-design')" data-cat="menu-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🍽️ Menu Design</button>
-                <button onclick="setFilter('it-system')" data-cat="it-system" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">💻 IT & System</button>
-                <button onclick="setFilter('video-editing')" data-cat="video-editing" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🎬 Video Editing</button>
-                <button onclick="setFilter('olah-data')" data-cat="olah-data" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📊 Olah Data SPSS</button>
+                <button onclick="setFilter('all')" data-cat="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy dark:bg-jokify-blue text-white border-jokify-navy dark:border-jokify-blue shadow-sm">⚡ Semua Karya</button>
+                <button onclick="setFilter('feeds-carousel')" data-cat="feeds-carousel" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📱 Design Feeds</button>
+                <button onclick="setFilter('idcard-lanyard')" data-cat="idcard-lanyard" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🪪 Lanyard & ID Card</button>
+                <button onclick="setFilter('booklet')" data-cat="booklet" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📖 Booklet & Modul</button>
+                <button onclick="setFilter('logo-packaging')" data-cat="logo-packaging" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🏷️ Logo & Packaging</button>
+                <button onclick="setFilter('menu-design')" data-cat="menu-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🍽️ Menu Design</button>
+                <button onclick="setFilter('it-system')" data-cat="it-system" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">💻 IT & System</button>
+                <button onclick="setFilter('video-editing')" data-cat="video-editing" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🎬 Video Editing</button>
+                <button onclick="setFilter('olah-data')" data-cat="olah-data" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📊 Olah Data SPSS</button>
             </div>
 
             <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                 <div class="col-span-full text-center py-12">
                     <div class="inline-block w-8 h-8 border-4 border-jokify-blue border-t-transparent rounded-full animate-spin mb-3"></div>
-                    <p class="text-sm text-slate-500 font-medium">Memuat katalog portofolio...</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Memuat katalog portofolio...</p>
                 </div>
             </div>
         </section>
@@ -201,30 +203,30 @@
         <section id="alur" class="scroll-mt-24">
             <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-xs font-bold text-jokify-blue tracking-wider uppercase">Work Process</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy mt-1">Alur Kerja Sederhana</h2>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy dark:text-white mt-1">Alur Kerja Sederhana</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 1</span>
-                    <h3 class="font-bold text-base text-jokify-navy">Konsultasi & Briefing Fast-Track</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Kirimkan instruksi tugas atau pilih contoh dari katalog. Tim Jokify langsung memberikan estimasi waktu dan biaya.</p>
+                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
+                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 dark:bg-sky-950/60 dark:text-sky-300 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 1</span>
+                    <h3 class="font-bold text-base text-jokify-navy dark:text-white">Konsultasi & Briefing Fast-Track</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">Kirimkan instruksi tugas atau pilih contoh dari katalog. Tim Jokify langsung memberikan estimasi waktu dan biaya.</p>
                 </div>
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 2</span>
-                    <h3 class="font-bold text-base text-jokify-navy">Pengerjaan Presisi & High Quality</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Eksekusi cepat dikerjakan oleh tim berpengalaman dengan standar profesional tanpa mengorbankan kualitas.</p>
+                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
+                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 dark:bg-sky-950/60 dark:text-sky-300 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 2</span>
+                    <h3 class="font-bold text-base text-jokify-navy dark:text-white">Pengerjaan Presisi & High Quality</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">Eksekusi cepat dikerjakan oleh tim berpengalaman dengan standar profesional tanpa mengorbankan kualitas.</p>
                 </div>
-                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 3</span>
-                    <h3 class="font-bold text-base text-jokify-navy">Preview, Revisi & Serah Terima</h3>
-                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Kamu menerima draf pengerjaan untuk dicek. Bebas revisi sampai sesuai brief sebelum file final dikirimkan.</p>
+                <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm transition-colors">
+                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 dark:bg-sky-950/60 dark:text-sky-300 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 3</span>
+                    <h3 class="font-bold text-base text-jokify-navy dark:text-white">Preview, Revisi & Serah Terima</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">Kamu menerima draf pengerjaan untuk dicek. Bebas revisi sampai sesuai brief sebelum file final dikirimkan.</p>
                 </div>
             </div>
         </section>
 
         <!-- 4. CALL TO ACTION (CTA) -->
-        <section class="bg-jokify-navy rounded-3xl p-8 md:p-12 text-white shadow-xl text-center max-w-4xl mx-auto">
+        <section class="bg-jokify-navy dark:bg-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center max-w-4xl mx-auto border border-slate-800">
             <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Siap Selesaikan Tugas & Proyek Kamu?</h2>
             <p class="text-slate-300 text-sm sm:text-base mt-3 max-w-xl mx-auto">Konsultasikan brief atau pertanyaan kamu secara langsung dengan admin Jokify melalui WhatsApp.</p>
             
@@ -243,29 +245,29 @@
     </main>
 
     <!-- ================= LIGHTBOX DETAIL MODAL POP-UP ================= -->
-    <div id="detailModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeModal()">
-        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col" onclick="event.stopPropagation()">
-            <div class="p-5 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 z-10">
-                <span id="modalEstTime" class="text-xs font-bold text-slate-500">⏱️ Est. Pengerjaan: -</span>
-                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
+    <div id="detailModal" class="fixed inset-0 z-50 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col border border-slate-100 dark:border-slate-800" onclick="event.stopPropagation()">
+            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-slate-900/95 z-10">
+                <span id="modalEstTime" class="text-xs font-bold text-slate-500 dark:text-slate-400">⏱️ Est. Pengerjaan: -</span>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center font-bold">✕</button>
             </div>
             
             <div class="p-6">
-                <div id="modalViewer" class="w-full bg-slate-100 rounded-2xl overflow-hidden mb-4 flex items-center justify-center border border-slate-200 min-h-[250px]">
+                <div id="modalViewer" class="w-full bg-slate-100 dark:bg-slate-950 rounded-2xl overflow-hidden mb-4 flex items-center justify-center border border-slate-200 dark:border-slate-800 min-h-[250px]">
                     <img id="modalImage" src="" alt="Preview" class="max-h-[380px] w-auto object-contain">
                 </div>
 
                 <div id="modalThumbnails" class="w-full flex items-center gap-2 overflow-x-auto pb-2 mb-4 scrollbar-thin"></div>
-                <h3 id="modalTitle" class="text-xl font-extrabold text-jokify-navy">Judul Proyek</h3>
-                <p id="modalDesc" class="text-sm text-slate-600 mt-2 leading-relaxed">Deskripsi proyek...</p>
+                <h3 id="modalTitle" class="text-xl font-extrabold text-jokify-navy dark:text-white">Judul Proyek</h3>
+                <p id="modalDesc" class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">Deskripsi proyek...</p>
                 <div class="mt-4">
                     <span class="text-xs font-bold text-slate-400 block uppercase tracking-wider mb-2">Tools Used:</span>
                     <div id="modalTools" class="flex flex-wrap gap-1.5"></div>
                 </div>
             </div>
 
-            <div class="p-5 border-t border-slate-100 bg-slate-50 rounded-b-3xl flex items-center justify-between">
-                <span class="text-xs text-slate-500">Fast delivery ready.</span>
+            <div class="p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 rounded-b-3xl flex items-center justify-between">
+                <span class="text-xs text-slate-500 dark:text-slate-400">Fast delivery ready.</span>
                 <a id="modalWaBtn" href="#" target="_blank" class="bg-jokify-blue hover:bg-sky-700 text-white font-bold text-sm px-6 py-2.5 rounded-xl transition-all inline-flex items-center gap-2">
                     <i class="fa-brands fa-whatsapp text-base"></i> Pesan via WhatsApp
                 </a>
@@ -274,24 +276,24 @@
     </div>
 
     <!-- ================= MODAL FORM TAMBAH PORTO (ADMIN) ================= -->
-    <div id="addModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeAddModal()">
-        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col" onclick="event.stopPropagation()">
-            <div class="p-5 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white z-10">
-                <h3 class="font-extrabold text-lg text-jokify-navy flex items-center gap-2">
+    <div id="addModal" class="fixed inset-0 z-50 bg-slate-900/70 dark:bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeAddModal()">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col border border-slate-200 dark:border-slate-800" onclick="event.stopPropagation()">
+            <div class="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white dark:bg-slate-900 z-10">
+                <h3 class="font-extrabold text-lg text-jokify-navy dark:text-white flex items-center gap-2">
                     <i class="fa-solid fa-folder-plus text-jokify-blue"></i> Tambah Portofolio Baru
                 </h3>
-                <button onclick="closeAddModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
+                <button onclick="closeAddModal()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center font-bold">✕</button>
             </div>
 
             <form id="addPortoForm" onsubmit="submitNewPorto(event)" class="p-6 space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Judul Karya / Proyek</label>
-                    <input type="text" id="addTitle" required placeholder="Contoh: Modul E-Book Panduan" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Judul Karya / Proyek</label>
+                    <input type="text" id="addTitle" required placeholder="Contoh: Modul E-Book Panduan" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Kategori</label>
-                    <select id="addCategory" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Pilih Kategori</label>
+                    <select id="addCategory" required class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                         <option value="feeds-carousel|Design Feeds">📱 Design Feeds</option>
                         <option value="idcard-lanyard|Lanyard & ID Card">🪪 Lanyard & ID Card</option>
                         <option value="booklet|Booklet & Modul">📖 Booklet & Modul</option>
@@ -304,33 +306,33 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Upload File (Bisa Foto PNG/JPG atau PDF)</label>
-                    <input type="file" id="addFiles" multiple accept="image/*,.pdf" required class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-jokify-blue file:text-white hover:file:bg-sky-700 cursor-pointer">
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Upload File (Bisa Foto PNG/JPG atau PDF)</label>
+                    <input type="file" id="addFiles" multiple accept="image/*,.pdf" required class="w-full text-xs text-slate-500 dark:text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-jokify-blue file:text-white hover:file:bg-sky-700 cursor-pointer">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Tools Used (Pisah koma)</label>
-                        <input type="text" id="addTools" placeholder="Figma, PDF Layout" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Tools Used (Pisah koma)</label>
+                        <input type="text" id="addTools" placeholder="Figma, PDF Layout" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">Est. Pengerjaan</label>
-                        <input type="text" id="addEstTime" placeholder="1-2 Hari" value="1-2 Hari" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Est. Pengerjaan</label>
+                        <input type="text" id="addEstTime" placeholder="1-2 Hari" value="1-2 Hari" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Deskripsi Karya</label>
-                    <textarea id="addDesc" rows="3" placeholder="Jelaskan detail singkat proyek ini..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue"></textarea>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Deskripsi Karya</label>
+                    <textarea id="addDesc" rows="3" placeholder="Jelaskan detail singkat proyek ini..." class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue"></textarea>
                 </div>
 
-                <div class="border-t border-slate-200 pt-3">
-                    <label class="block text-xs font-bold text-rose-600 mb-1">🔑 Password Admin</label>
-                    <input type="password" id="addPassword" required placeholder="Masukkan password admin..." class="w-full px-3.5 py-2.5 bg-rose-50 border border-rose-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-rose-400">
+                <div class="border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <label class="block text-xs font-bold text-rose-600 dark:text-rose-400 mb-1">🔑 Password Admin</label>
+                    <input type="password" id="addPassword" required placeholder="Masukkan password admin..." class="w-full px-3.5 py-2.5 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-rose-400">
                 </div>
 
                 <div class="pt-2">
-                    <button type="submit" id="submitBtn" class="w-full bg-jokify-navy hover:bg-slate-800 text-white font-bold text-sm py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+                    <button type="submit" id="submitBtn" class="w-full bg-jokify-navy dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold text-sm py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
                         <span>Upload & Simpan Karya</span>
                     </button>
                 </div>
@@ -339,13 +341,13 @@
     </div>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-white border-t border-slate-200 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center sm:flex sm:items-center sm:justify-between text-xs text-slate-500">
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 text-center sm:flex sm:items-center sm:justify-between text-xs text-slate-500 dark:text-slate-400">
             <picture>
                 <source srcset="assets/logojokify-terang.png" media="(prefers-color-scheme: dark)">
                 <img src="assets/logojokify.png" alt="Jokify Logo" class="h-9 sm:h-10 w-auto object-contain mx-auto sm:mx-0 mb-2 sm:mb-0">
             </picture>
-            <p>© 2026 Jokify — Turning Ideas into Pixel-Perfect Solutions. Instagram: <a href="https://instagram.com/jokify_" target="_blank" class="text-rose-600 font-bold hover:underline">@jokify_</a></p>
+            <p>© 2026 Jokify — Turning Ideas into Pixel-Perfect Solutions. Instagram: <a href="https://instagram.com/jokify_" target="_blank" class="text-rose-600 dark:text-rose-400 font-bold hover:underline">@jokify_</a></p>
         </div>
     </footer>
 
@@ -448,9 +450,9 @@
 
             if (data.length === 0) {
                 grid.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200">
-                        <p class="text-slate-500 text-sm">Contoh karya tidak ditemukan di kategori ini.</p>
-                        <button onclick="setFilter('all')" class="mt-3 text-xs text-jokify-blue font-bold underline">Lihat Semua Karya</button>
+                    <div class="col-span-full text-center py-12 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Contoh karya tidak ditemukan di kategori ini.</p>
+                        <button onclick="setFilter('all')" class="mt-3 text-xs text-jokify-blue dark:text-sky-400 font-bold underline">Lihat Semua Karya</button>
                     </div>
                 `;
                 return;
@@ -463,18 +465,18 @@
                 const waUrl = `https://wa.me/${PHONE_ADMIN}?text=${encodeURIComponent(`Halo Jokify! Aku mau pesan layanan seperti contoh "${item.title}". Bisa bantu?`)}`;
 
                 const coverHtml = isPdf ? `
-                    <div class="w-full h-full bg-rose-50 flex flex-col items-center justify-center text-rose-600 font-bold p-4">
+                    <div class="w-full h-full bg-rose-50 dark:bg-rose-950/40 flex flex-col items-center justify-center text-rose-600 dark:text-rose-400 font-bold p-4">
                         <i class="fa-solid fa-file-pdf text-4xl mb-2"></i>
                         <span class="text-xs">Dokumen PDF</span>
                     </div>
                 ` : `
-                    <img src="${coverImage}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-full h-full bg-rose-50 flex flex-col items-center justify-center text-rose-600 font-bold p-4\\'><i class=\\'fa-solid fa-file-pdf text-4xl mb-2\\'></i><span class=\\'text-xs\\'>Dokumen PDF</span></div>';">
+                    <img src="${coverImage}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-full h-full bg-rose-50 dark:bg-rose-950/40 flex flex-col items-center justify-center text-rose-600 dark:text-rose-400 font-bold p-4\\'><i class=\\'fa-solid fa-file-pdf text-4xl mb-2\\'></i><span class=\\'text-xs\\'>Dokumen PDF</span></div>';">
                 `;
 
                 grid.innerHTML += `
-                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                         <div>
-                            <div class="relative overflow-hidden aspect-video bg-slate-100 cursor-pointer" onclick="openModal('${item.id}')">
+                            <div class="relative overflow-hidden aspect-video bg-slate-100 dark:bg-slate-950 cursor-pointer" onclick="openModal('${item.id}')">
                                 ${coverHtml}
                                 <span class="absolute top-2 left-2 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md flex items-center gap-1 shadow-sm">
                                     ${isPdf ? '📄 PDF' : '📸 ' + slideCount + ' Gambar'}
@@ -482,17 +484,17 @@
                             </div>
                             <div class="p-5">
                                 <div class="flex items-center justify-between gap-2 mb-2">
-                                    <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md border bg-slate-100 text-slate-700">${item.categoryLabel}</span>
+                                    <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md border bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700">${item.categoryLabel}</span>
                                     <span class="text-xs text-slate-400 font-medium">⏱️ ${item.estTime}</span>
                                 </div>
-                                <h3 onclick="openModal('${item.id}')" class="font-bold text-base text-jokify-navy group-hover:text-jokify-blue transition-colors cursor-pointer line-clamp-2">${item.title}</h3>
+                                <h3 onclick="openModal('${item.id}')" class="font-bold text-base text-jokify-navy dark:text-white group-hover:text-jokify-blue dark:group-hover:text-sky-400 transition-colors cursor-pointer line-clamp-2">${item.title}</h3>
                                 <div class="flex flex-wrap gap-1 mt-3">
-                                    ${item.tools.map(t => `<span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-medium">${t}</span>`).join('')}
+                                    ${item.tools.map(t => `<span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-md font-medium border border-slate-200/50 dark:border-slate-700/50">${t}</span>`).join('')}
                                 </div>
                             </div>
                         </div>
-                        <div class="px-5 pb-5 pt-2 flex items-center gap-2 border-t border-slate-100 mt-2">
-                            <button onclick="openModal('${item.id}')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 rounded-xl transition-colors">Detail & Viewer</button>
+                        <div class="px-5 pb-5 pt-2 flex items-center gap-2 border-t border-slate-100 dark:border-slate-800/80 mt-2">
+                            <button onclick="openModal('${item.id}')" class="flex-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold py-2.5 rounded-xl transition-colors">Detail & Viewer</button>
                             <a href="${waUrl}" target="_blank" class="flex-1 bg-jokify-blue hover:bg-sky-700 text-white text-xs font-bold py-2.5 rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
                                 <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
                             </a>
@@ -506,9 +508,9 @@
             currentCategory = cat;
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if(btn.dataset.cat === cat) {
-                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy text-white border-jokify-navy shadow-sm";
+                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy dark:bg-jokify-blue text-white border-jokify-navy dark:border-jokify-blue shadow-sm";
                 } else {
-                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400";
+                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600";
                 }
             });
             filterAndSearch();
@@ -545,17 +547,17 @@
                 item.images.forEach((imgSrc, idx) => {
                     const isPdf = isPdfUrl(imgSrc);
                     const activeStyle = idx === 0 ? 'ring-2 ring-jokify-blue scale-105' : 'opacity-70 hover:opacity-100';
-                    const thumbInner = isPdf ? `<div class="w-full h-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-[10px]">PDF</div>` : `<img src="${imgSrc}" class="w-full h-full object-cover">`;
+                    const thumbInner = isPdf ? `<div class="w-full h-full bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold text-[10px]">PDF</div>` : `<img src="${imgSrc}" class="w-full h-full object-cover">`;
                     
                     thumbContainer.innerHTML += `
-                        <button onclick="switchModalContent('${imgSrc}', this)" class="thumb-btn flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border border-slate-200 transition-all ${activeStyle}">
+                        <button onclick="switchModalContent('${imgSrc}', this)" class="thumb-btn flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 transition-all ${activeStyle}">
                             ${thumbInner}
                         </button>
                     `;
                 });
             }
 
-            document.getElementById('modalTools').innerHTML = item.tools.map(t => `<span class="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-semibold inline-block mr-1 mb-1">${t}</span>`).join('');
+            document.getElementById('modalTools').innerHTML = item.tools.map(t => `<span class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-1 rounded-lg font-semibold inline-block mr-1 mb-1 border border-slate-200 dark:border-slate-700">${t}</span>`).join('');
             document.getElementById('modalWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${encodeURIComponent(`Halo Jokify! Aku tertarik pesan jasa seperti contoh "${item.title}".`)}`;
             document.getElementById('detailModal').classList.remove('hidden');
         }
@@ -564,10 +566,10 @@
             const viewer = document.getElementById('modalViewer');
             if (isPdfUrl(url)) {
                 viewer.innerHTML = `
-                    <div class="w-full py-10 bg-slate-50 flex flex-col items-center justify-center text-center p-6">
+                    <div class="w-full py-10 bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center text-center p-6">
                         <i class="fa-solid fa-file-pdf text-6xl text-rose-500 mb-3"></i>
-                        <p class="font-bold text-slate-800 text-sm mb-1">Dokumen Berformat PDF</p>
-                        <p class="text-xs text-slate-500 mb-4">Klik tombol di bawah untuk membuka & membaca dokumen PDF secara utuh.</p>
+                        <p class="font-bold text-slate-800 dark:text-white text-sm mb-1">Dokumen Berformat PDF</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">Klik tombol di bawah untuk membuka & membaca dokumen PDF secara utuh.</p>
                         <a href="${url}" target="_blank" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-6 py-3 rounded-xl transition-all shadow-md inline-flex items-center gap-2">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka / Preview Dokumen PDF
                         </a>
