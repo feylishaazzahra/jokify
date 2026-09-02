@@ -166,7 +166,83 @@
             </div>
         </section>
 
-        <!-- 2. INTERACTIVE CATALOG & SEARCH -->
+        <!-- 2. FEATURED CATEGORY BANNERS -->
+        <section class="scroll-mt-24">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- Banner 1: Desain Visual & Feeds -->
+                <div onclick="setFilter('feeds-carousel'); document.getElementById('katalog').scrollIntoView({behavior: 'smooth'})" 
+                     class="group relative overflow-hidden rounded-3xl p-6 bg-gradient-to-br from-rose-500 via-pink-600 to-orange-500 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[200px]">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                    
+                    <div class="flex items-center justify-between z-10">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-extrabold px-3 py-1 rounded-full border border-white/30">
+                            🔥 Popular Service
+                        </span>
+                        <span class="text-3xl transform group-hover:scale-110 transition-transform">🎨</span>
+                    </div>
+
+                    <div class="z-10 mt-6">
+                        <h3 class="text-xl font-extrabold tracking-tight">Design & Microblog</h3>
+                        <p class="text-xs text-rose-100 mt-1 leading-relaxed">Feeds Instagram, Carousel, Poster, & Branding Kit profesional.</p>
+                    </div>
+
+                    <div class="z-10 mt-4 flex items-center gap-1 text-xs font-bold underline decoration-2 underline-offset-4 group-hover:gap-2 transition-all">
+                        <span>Eksplor Katalog Desain</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Banner 2: PPT & Academic Support -->
+                <div onclick="setFilter('ppt-design'); document.getElementById('katalog').scrollIntoView({behavior: 'smooth'})" 
+                     class="group relative overflow-hidden rounded-3xl p-6 bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[200px]">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                    
+                    <div class="flex items-center justify-between z-10">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-extrabold px-3 py-1 rounded-full border border-white/30">
+                            ⚡ Fast Delivery
+                        </span>
+                        <span class="text-3xl transform group-hover:scale-110 transition-transform">📊</span>
+                    </div>
+
+                    <div class="z-10 mt-6">
+                        <h3 class="text-xl font-extrabold tracking-tight">Slide Presentasi PPT</h3>
+                        <p class="text-xs text-sky-100 mt-1 leading-relaxed">Desain slide aesthetic, rapi, & siap pakai untuk sidang / bisnis.</p>
+                    </div>
+
+                    <div class="z-10 mt-4 flex items-center gap-1 text-xs font-bold underline decoration-2 underline-offset-4 group-hover:gap-2 transition-all">
+                        <span>Lihat Contoh Slide</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Banner 3: IT, Code & SPSS -->
+                <div onclick="setFilter('it-system'); document.getElementById('katalog').scrollIntoView({behavior: 'smooth'})" 
+                     class="group relative overflow-hidden rounded-3xl p-6 bg-gradient-to-br from-emerald-500 via-teal-600 to-slate-800 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between min-h-[200px]">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                    
+                    <div class="flex items-center justify-between z-10">
+                        <span class="bg-white/20 backdrop-blur-md text-white text-[11px] font-extrabold px-3 py-1 rounded-full border border-white/30">
+                            💻 Precision & Clean Code
+                        </span>
+                        <span class="text-3xl transform group-hover:scale-110 transition-transform">⚡</span>
+                    </div>
+
+                    <div class="z-10 mt-6">
+                        <h3 class="text-xl font-extrabold tracking-tight">IT, DFD & Olah Data</h3>
+                        <p class="text-xs text-emerald-100 mt-1 leading-relaxed">Coding C/HTML, DFD/Flowchart, & olah data SPSS valid.</p>
+                    </div>
+
+                    <div class="z-10 mt-4 flex items-center gap-1 text-xs font-bold underline decoration-2 underline-offset-4 group-hover:gap-2 transition-all">
+                        <span>Lihat Proyek IT</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. INTERACTIVE CATALOG & SEARCH -->
         <section id="katalog" class="scroll-mt-24">
             <div class="text-center max-w-2xl mx-auto mb-8">
                 <span class="text-xs font-bold text-jokify-orange tracking-wider uppercase">Interactive Catalog</span>
@@ -200,7 +276,7 @@
             </div>
         </section>
 
-        <!-- 3. WORK PROCESS -->
+        <!-- 4. WORK PROCESS -->
         <section id="alur" class="scroll-mt-24">
             <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-xs font-bold text-jokify-blue tracking-wider uppercase">Work Process</span>
@@ -226,7 +302,7 @@
             </div>
         </section>
 
-        <!-- 4. CALL TO ACTION (CTA) -->
+        <!-- 5. CALL TO ACTION (CTA) -->
         <section class="bg-jokify-navy dark:bg-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center max-w-4xl mx-auto border border-slate-800">
             <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Siap Selesaikan Tugas & Proyek Kamu?</h2>
             <p class="text-slate-300 text-sm sm:text-base mt-3 max-w-xl mx-auto">Konsultasikan brief atau pertanyaan kamu secara langsung dengan admin Jokify melalui WhatsApp.</p>
