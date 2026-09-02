@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokify — Turning Ideas into Pixel-Perfect Solutions</title>
+    
+    <!-- Google Fonts & FontAwesome CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN dengan Konfigurasi Brand Jokify -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        jokify: {
+                            navy: '#0F172A',
+                            amber: '#F59E0B',
+                            orange: '#F97316',
+                            blue: '#0284C7',
+                            teal: '#0D9488',
+                            grayBg: '#F8FAFC'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-jokify-grayBg text-jokify-navy font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-jokify-blue selection:text-white">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img src="assets/logojokify.png" alt="Jokify Logo" class="h-10 sm:h-12 w-auto object-contain">
+                <span class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 border border-slate-200">
+                    Portfolio & Catalog
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600">
+                <a href="#about" class="hover:text-jokify-navy transition-colors">Tentang</a>
+                <a href="#skills" class="hover:text-jokify-navy transition-colors">Layanan</a>
+                <a href="#katalog" class="hover:text-jokify-navy transition-colors">Katalog Works</a>
+                <a href="#alur" class="hover:text-jokify-navy transition-colors">Alur Kerja</a>
+            </nav>
+
+            <a id="navWaBtn" href="#" target="_blank" class="bg-jokify-blue hover:bg-sky-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition-all shadow-sm active:scale-95 flex items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>Chat Admin WA</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="about" class="bg-white border-b border-slate-200 py-12 md:py-16 scroll-mt-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold mb-6 border border-slate-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Turning Ideas into Pixel-Perfect Solutions</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-jokify-navy">
+                Solusi Cepat Tugas <span class="text-jokify-blue">IT</span>, <span class="text-jokify-orange">Desain</span>, <span class="text-jokify-teal">Editing</span> & <span class="text-jokify-amber">Data</span>
+            </h1>
+
+            <p class="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Jokify mempermudah kamu menemukan referensi karya dan pemesanan eksekusi cepat dengan hasil rapi, respon cepat, serta alur tanpa perantara yang rumit.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="#katalog" class="w-full sm:w-auto bg-jokify-navy hover:bg-slate-800 text-white font-bold text-sm px-6 py-3.5 rounded-xl transition-all shadow-md">
+                    Eksplorasi Katalog Works
+                </a>
+                <a id="heroCustomBtn" href="#" target="_blank" class="w-full sm:w-auto bg-jokify-amber hover:bg-amber-400 text-slate-950 font-bold text-sm px-6 py-3.5 rounded-xl transition-all">
+                    Request Custom Project
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full space-y-16">
+
+        <!-- 1. SERVICES & EXPERTISE -->
+        <section id="skills" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold text-jokify-teal tracking-wider uppercase">Services & Expertise</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy mt-1">Bidang Keahlian Jokify</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <div class="text-3xl mb-3">🎨</div>
+                    <h3 class="font-bold text-lg text-jokify-navy mb-3">Design & Visuals</h3>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li>• UI/UX Layouting (Figma)</li>
+                        <li>• IG Feeds & Microblog Carousel</li>
+                        <li>• Booklet, Modul & E-Book</li>
+                        <li>• Banner & Poster Event</li>
+                        <li>• Logo & Brand Identity</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <div class="text-3xl mb-3">💻</div>
+                    <h3 class="font-bold text-lg text-jokify-navy mb-3">IT & Software Solutions</h3>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li>• Web Development (Frontend)</li>
+                        <li>• Tugas Koding (C/C++, HTML/CSS/JS)</li>
+                        <li>• Database & SQL Scripting</li>
+                        <li>• Perancangan DFD & Flowchart</li>
+                        <li>• Riset System Architecture</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <div class="text-3xl mb-3">🎬</div>
+                    <h3 class="font-bold text-lg text-jokify-navy mb-3">Media & Editing</h3>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li>• Video Shorts / TikTok / Reels</li>
+                        <li>• CapCut Pro & Premiere Pro</li>
+                        <li>• Foto Retouching & Mockup</li>
+                        <li>• Design Slide Presentasi PPT</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <div class="text-3xl mb-3">📊</div>
+                    <h3 class="font-bold text-lg text-jokify-navy mb-3">Data & Academic Support</h3>
+                    <ul class="space-y-2 text-xs text-slate-600">
+                        <li>• Formatting Dokumen Word/PDF</li>
+                        <li>• Olah Data SPSS & Validitas</li>
+                        <li>• Microsoft Excel & Formula</li>
+                        <li>• Restrukturisasi Laporan/Tugas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. INTERACTIVE CATALOG & SEARCH -->
+        <section id="katalog" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="text-xs font-bold text-jokify-orange tracking-wider uppercase">Interactive Catalog</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy mt-1">Galeri & Contoh Portofolio</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Cari berdasarkan kata kunci atau pilih filter kategori di bawah.</p>
+            </div>
+
+            <!-- Live Search Bar -->
+            <div class="max-w-xl mx-auto mb-6">
+                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Dulizzert, Evercurse, Waypoint, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white border border-slate-300 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start sm:justify-center" id="filterContainer">
+                <button onclick="setFilter('all')" data-cat="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy text-white border-jokify-navy shadow-sm">⚡ Semua Karya</button>
+                <button onclick="setFilter('design')" data-cat="design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🎨 Design & Visuals</button>
+                <button onclick="setFilter('it')" data-cat="it" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">💻 IT & System</button>
+                <button onclick="setFilter('editing')" data-cat="editing" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">🎬 Media & Editing</button>
+                <button onclick="setFilter('data')" data-cat="data" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400">📊 Data & Academic</button>
+            </div>
+
+            <!-- Portfolio Cards Grid Container -->
+            <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+        </section>
+
+        <!-- 3. WORK PROCESS -->
+        <section id="alur" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold text-jokify-blue tracking-wider uppercase">Work Process</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy mt-1">Alur Kerja Sederhana</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 1</span>
+                    <h3 class="font-bold text-base text-jokify-navy">Konsultasi & Briefing Fast-Track</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Kirimkan instruksi tugas atau pilih contoh dari katalog. Tim Jokify langsung memberikan estimasi waktu dan biaya.</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 2</span>
+                    <h3 class="font-bold text-base text-jokify-navy">Pengerjaan Presisi & High Quality</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Eksekusi cepat dikerjakan oleh tim berpengalaman dengan standar profesional tanpa mengorbankan kualitas.</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <span class="text-xs font-extrabold text-jokify-blue bg-sky-50 px-2.5 py-1 rounded-md mb-3 inline-block">Langkah 3</span>
+                    <h3 class="font-bold text-base text-jokify-navy">Preview, Revisi & Serah Terima</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">Kamu menerima draf pengerjaan untuk dicek. Bebas revisi sampai sesuai brief sebelum file final dikirimkan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CALL TO ACTION (CTA) -->
+        <section class="bg-jokify-navy rounded-3xl p-8 md:p-12 text-white shadow-xl text-center max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">Siap Selesaikan Tugas & Proyek Kamu?</h2>
+            <p class="text-slate-300 text-sm sm:text-base mt-3 max-w-xl mx-auto">Konsultasikan brief atau pertanyaan kamu secara langsung dengan admin Jokify melalui WhatsApp.</p>
+            <div class="mt-6 flex justify-center">
+                <a id="ctaWaBtn" href="#" target="_blank" class="bg-jokify-blue hover:bg-sky-400 text-white font-extrabold text-sm px-8 py-3.5 rounded-xl transition-all shadow-md inline-flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    Konsultasi via WhatsApp
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= LIGHTBOX MODAL POP-UP ================= -->
+    <div id="detailModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+            <!-- Modal Header -->
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 z-10">
+                <span id="modalEstTime" class="text-xs font-bold text-slate-500">⏱️ Est. Pengerjaan: -</span>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="p-6">
+                <!-- Main Large Image View -->
+                <div class="w-full bg-slate-100 rounded-2xl overflow-hidden mb-4 flex items-center justify-center border border-slate-200">
+                    <img id="modalImage" src="" alt="Preview" class="max-h-[380px] w-auto object-contain">
+                </div>
+
+                <!-- Horizontal Thumbnail Strip -->
+                <div id="modalThumbnails" class="w-full flex items-center gap-2 overflow-x-auto pb-2 mb-4 scrollbar-thin"></div>
+
+                <!-- Text Metadata -->
+                <h3 id="modalTitle" class="text-xl font-extrabold text-jokify-navy">Judul Proyek</h3>
+                <p id="modalDesc" class="text-sm text-slate-600 mt-2 leading-relaxed">Deskripsi proyek...</p>
+                
+                <div class="mt-4">
+                    <span class="text-xs font-bold text-slate-400 block uppercase tracking-wider mb-2">Tools Used:</span>
+                    <div id="modalTools" class="flex flex-wrap gap-1.5"></div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-5 border-t border-slate-100 bg-slate-50 rounded-b-3xl flex items-center justify-between">
+                <span class="text-xs text-slate-500">Fast delivery ready.</span>
+                <a id="modalWaBtn" href="#" target="_blank" class="bg-jokify-blue hover:bg-sky-700 text-white font-bold text-sm px-6 py-2.5 rounded-xl transition-all inline-flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    Pesan via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-white border-t border-slate-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center sm:flex sm:items-center sm:justify-between text-xs text-slate-500">
+            <img src="assets/logojokify.png" alt="Jokify Logo" class="h-9 sm:h-10 w-auto object-contain mx-auto sm:mx-0 mb-2 sm:mb-0">
+            <p>© 2026 Jokify — Turning Ideas into Pixel-Perfect Solutions.</p>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC & DATA ================= -->
+    <script>
+        // GANTI NOMOR WHATSAPP ADMIN DI SINI (Format: 628...)
+        const PHONE_ADMIN = '6287888922537';
+
+        // DATA PORTOFOLIO KARYA JOKIFY
+        const portfolioData = [
+            // --- BRANDING ---
+            {
+                id: 'dulizzert',
+                title: 'Dulizzert Logo & Packaging Mockup',
+                category: 'design',
+                categoryLabel: 'Design & Visuals',
+                images: [
+                    'assets/branding/dulizzert-logo.png',
+                    'assets/branding/dulizzert-mockup.png'
+                ],
+                tools: ['Figma', 'Illustrator', 'Mockup Design'],
+                estTime: '1-2 Hari',
+                desc: 'Desain logo identitas visual dessert shop Dulizzert lengkap dengan ikon sago, slogan "Dreamy, Yummy, Dessert", serta mockup kemasan produk.'
+            },
+
+            // --- EVENT DESIGN ---
+            {
+                id: 'evercurse',
+                title: 'Evercurse Event Merchandise & ID Kit',
+                category: 'design',
+                categoryLabel: 'Design & Visuals',
+                images: [
+                    'assets/event-design/evercurse-mockup.png',
+                    'assets/event-design/evercurse-id-card.png',
+                    'assets/event-design/evercurse-lanyard.png'
+                ],
+                tools: ['Figma', 'Photoshop Mockup'],
+                estTime: '1-2 Hari',
+                desc: 'Set desain identitas acara terpadu mulai dari ID card panitia & peserta, tali lanyard, hingga mockup merchandise event.'
+            },
+
+            // --- PRINT DESIGN ---
+            {
+                id: 'training-legislatif',
+                title: 'Training Legislatif Booklet & Print Mockup',
+                category: 'design',
+                categoryLabel: 'Design & Visuals',
+                images: [
+                    'assets/print-design/training-legislatif-cover.png',
+                    'assets/print-design/training-legislatif-mockup1.png',
+                    'assets/print-design/training-legislatif-mockup2.png'
+                ],
+                tools: ['Figma', 'InDesign', 'PDF Layout'],
+                estTime: '1-2 Hari',
+                desc: 'Tata letak modul cetak acara Training Legislatif dengan hirarki teks jernih dan visualisasi mockup cetak realistis.'
+            },
+            {
+                id: 'waypoint',
+                title: 'Waypoint Restaurant Culinary Menu Design',
+                category: 'design',
+                categoryLabel: 'Design & Visuals',
+                images: [
+                    'assets/print-design/waypoint-menu1.png',
+                    'assets/print-design/waypoint-menu2.png',
+                    'assets/print-design/waypoint-menu3.png'
+                ],
+                tools: ['Figma', 'Illustrator'],
+                estTime: '1-2 Hari',
+                desc: 'Desain buku menu restoran Waypoint multi-halaman dengan tatanan visual makanan yang bersih dan elegan.'
+            },
+
+            // --- SOCIAL MEDIA ---
+            {
+                id: 'fomo',
+                title: 'FOMO Instagram Microblog Carousel Set',
+                category: 'design',
+                categoryLabel: 'Design & Visuals',
+                images: [
+                    'assets/social-media/fomo-1.png',
+                    'assets/social-media/fomo-2.png',
+                    'assets/social-media/fomo-3.png',
+                    'assets/social-media/fomo-4.png',
+                    'assets/social-media/fomo-5.png',
+                    'assets/social-media/fomo-6.png'
+                ],
+                tools: ['Figma', 'Social Media Design'],
+                estTime: '1-2 Hari',
+                desc: 'Konten mikroblog 6 slide Instagram bertema FOMO dengan visual kontras dan alur baca terstruktur.'
+            },
+
+            // --- IT & SYSTEM ---
+            {
+                id: 'dfd-clinic',
+                title: 'Diagram DFD Level 0 & Level 1 System Clinic',
+                category: 'it',
+                categoryLabel: 'IT & System',
+                images: [
+                    'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80'
+                ],
+                tools: ['Draw.io', 'Visio', 'MariaDB / SQL'],
+                estTime: '1 Hari',
+                desc: 'Perancangan alur data terstruktur lengkap dengan entitas luar, pemrosesan data, dan spesifikasi tabel database.'
+            },
+            {
+                id: 'cpp-structure',
+                title: 'Program C++ Structure Data & Array Buffer',
+                category: 'it',
+                categoryLabel: 'IT & System',
+                images: [
+                    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80'
+                ],
+                tools: ['C++', 'Code::Blocks', 'VS Code'],
+                estTime: '1 Hari',
+                desc: 'Kodingan bersih terstruktur lengkap dengan dokumentasi komentar per fungsi dan efisiensi memori.'
+            },
+
+            // --- MEDIA & EDITING ---
+            {
+                id: 'video-reels',
+                title: 'Editing Short Video Reels / TikTok Event',
+                category: 'editing',
+                categoryLabel: 'Media & Editing',
+                images: [
+                    'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80'
+                ],
+                tools: ['CapCut Pro', 'Premiere Pro'],
+                estTime: '1 Hari',
+                desc: 'Editing video durasi singkat dengan transisi dinamis, penambahan subtitle otomatis, dan sinkronisasi audio.'
+            },
+
+            // --- DATA & ACADEMIC ---
+            {
+                id: 'spss-data',
+                title: 'Olah Data SPSS Uji Regresi & Validitas',
+                category: 'data',
+                categoryLabel: 'Data & Academic',
+                images: [
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
+                ],
+                tools: ['SPSS', 'Excel', 'Data Interpretation'],
+                estTime: '1-2 Hari',
+                desc: 'Pengolahan data kuesioner lengkap dengan grafik pembacaan, interpretasi hasil validitas dan reliabilitas.'
+            }
+        ];
+
+        let currentCategory = 'all';
+
+        // Render Card Grid
+        function renderCards(data) {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200">
+                        <p class="text-slate-500 text-sm">Contoh karya tidak ditemukan.</p>
+                        <a href="https://wa.me/${PHONE_ADMIN}?text=Halo%20Jokify!%20Aku%20mau%20request%20custom" target="_blank" class="inline-block mt-3 bg-jokify-amber text-slate-950 text-xs font-bold px-4 py-2 rounded-xl">
+                            Diskusi Custom Order
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            data.forEach(item => {
+                const coverImage = item.images[0];
+                const slideCount = item.images.length;
+                const waMessage = encodeURIComponent(`Halo Jokify! Aku mau pesan layanan seperti contoh "${item.title}". Bisa bantu?`);
+                const waUrl = `https://wa.me/${PHONE_ADMIN}?text=${waMessage}`;
+
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+                        <div>
+                            <div class="relative overflow-hidden aspect-video bg-slate-100 cursor-pointer" onclick="openModal('${item.id}')">
+                                <img src="${coverImage}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <span class="absolute top-2 left-2 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md flex items-center gap-1 shadow-sm">
+                                    📸 ${slideCount} ${slideCount > 1 ? 'Foto' : 'Gambar'}
+                                </span>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center justify-between gap-2 mb-2">
+                                    <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md border bg-slate-100 text-slate-700">${item.categoryLabel}</span>
+                                    <span class="text-xs text-slate-400 font-medium">⏱️ ${item.estTime}</span>
+                                </div>
+                                <h3 onclick="openModal('${item.id}')" class="font-bold text-base text-jokify-navy group-hover:text-jokify-blue transition-colors cursor-pointer line-clamp-2">${item.title}</h3>
+                                <div class="flex flex-wrap gap-1 mt-3">
+                                    ${item.tools.map(t => `<span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-medium">${t}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-5 pb-5 pt-2 flex items-center gap-2 border-t border-slate-100 mt-2">
+                            <button onclick="openModal('${item.id}')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 rounded-xl transition-colors">Detail & Galeri</button>
+                            <a href="${waUrl}" target="_blank" class="flex-1 bg-jokify-blue hover:bg-sky-700 text-white text-xs font-bold py-2.5 rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Filter Function
+        function setFilter(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if(btn.dataset.cat === cat) {
+                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy text-white border-jokify-navy shadow-sm";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white text-slate-600 border-slate-200 hover:border-slate-400";
+                }
+            });
+            filterAndSearch();
+        }
+
+        // Live Search Function
+        document.getElementById('searchInput').addEventListener('input', filterAndSearch);
+
+        function filterAndSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = portfolioData.filter(item => {
+                const matchCat = (currentCategory === 'all') || (item.category === currentCategory);
+                const matchSearch = item.title.toLowerCase().includes(query) || 
+                                    item.desc.toLowerCase().includes(query) || 
+                                    item.tools.some(t => t.toLowerCase().includes(query));
+                return matchCat && matchSearch;
+            });
+            renderCards(filtered);
+        }
+
+        // Modal Functionality with Multi-Photo Thumbnail Switcher
+        function openModal(id) {
+            const item = portfolioData.find(p => p.id === id);
+            if(!item) return;
+
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalDesc').innerText = item.desc;
+            document.getElementById('modalImage').src = item.images[0];
+            document.getElementById('modalEstTime').innerText = `⏱️ Est. Pengerjaan: ${item.estTime}`;
+            
+            // Build Thumbnail Strip
+            const thumbContainer = document.getElementById('modalThumbnails');
+            thumbContainer.innerHTML = '';
+
+            if (item.images.length > 1) {
+                item.images.forEach((imgSrc, idx) => {
+                    const activeStyle = idx === 0 ? 'ring-2 ring-jokify-blue scale-105' : 'opacity-70 hover:opacity-100';
+                    thumbContainer.innerHTML += `
+                        <button onclick="switchModalImage('${imgSrc}', this)" class="thumb-btn flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border border-slate-200 transition-all ${activeStyle}">
+                            <img src="${imgSrc}" class="w-full h-full object-cover">
+                        </button>
+                    `;
+                });
+            }
+
+            // Build Tool Pills
+            document.getElementById('modalTools').innerHTML = item.tools.map(t => `<span class="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-semibold inline-block mr-1 mb-1">${t}</span>`).join('');
+
+            // Set Order Link
+            const waMessage = encodeURIComponent(`Halo Jokify! Aku tertarik pesan jasa seperti contoh "${item.title}".`);
+            document.getElementById('modalWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${waMessage}`;
+
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function switchModalImage(imgSrc, btnEl) {
+            document.getElementById('modalImage').src = imgSrc;
+            document.querySelectorAll('.thumb-btn').forEach(b => b.classList.remove('ring-2', 'ring-jokify-blue', 'scale-105'));
+            document.querySelectorAll('.thumb-btn').forEach(b => b.classList.add('opacity-70'));
+            if(btnEl) {
+                btnEl.classList.remove('opacity-70');
+                btnEl.classList.add('ring-2', 'ring-jokify-blue', 'scale-105');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // Initialize Links & Render Default Cards
+        window.addEventListener('DOMContentLoaded', () => {
+            const defaultWaMsg = encodeURIComponent("Halo Jokify! Aku mau konsultasi pengerjaan tugas/proyek.");
+            document.getElementById('navWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${defaultWaMsg}`;
+            document.getElementById('ctaWaBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${defaultWaMsg}`;
+            document.getElementById('heroCustomBtn').href = `https://wa.me/${PHONE_ADMIN}?text=${encodeURIComponent("Halo Jokify! Aku mau request custom order.")}`;
+            
+            renderCards(portfolioData);
+        });
+    </script>
+</body>
+</html>
