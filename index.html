@@ -125,7 +125,8 @@
                     <div class="text-3xl mb-3">🎨</div>
                     <h3 class="font-bold text-lg text-jokify-navy dark:text-white mb-3">Design & Visuals</h3>
                     <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                        <li>• IG Feeds & Microblog Carousel</li>
+                        <li>• Social Media & Microblog</li>
+                        <li>• Custom Background Zoom</li>
                         <li>• Banner Design & Header Visual</li>
                         <li>• Poster & Infografis Educative</li>
                         <li>• Lanyard, ID Card & Event Kit</li>
@@ -175,13 +176,14 @@
             </div>
 
             <div class="max-w-xl mx-auto mb-6">
-                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Banner, Dulizzert, Evercurse, Waypoint, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
+                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Banner, Background Zoom, Social Media, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
             </div>
 
             <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start scrollbar-thin px-2" id="filterContainer">
                 <button onclick="setFilter('all')" data-cat="all" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy dark:bg-jokify-blue text-white border-jokify-navy dark:border-jokify-blue shadow-sm">⚡ Semua Karya</button>
                 <button onclick="setFilter('banner-design')" data-cat="banner-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🎨 Banner Design</button>
-                <button onclick="setFilter('feeds-carousel')" data-cat="feeds-carousel" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📱 Design Feeds</button>
+                <button onclick="setFilter('social-media')" data-cat="social-media" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📱 Social Media</button>
+                <button onclick="setFilter('background-zoom')" data-cat="background-zoom" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🖼️ Background Zoom</button>
                 <button onclick="setFilter('ppt-design')" data-cat="ppt-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📊 Slide Presentasi PPT</button>
                 <button onclick="setFilter('poster-infografis')" data-cat="poster-infografis" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🖼️ Poster & Infografis</button>
                 <button onclick="setFilter('idcard-lanyard')" data-cat="idcard-lanyard" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🪪 Lanyard & ID Card</button>
@@ -297,7 +299,8 @@
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Pilih Kategori</label>
                     <select id="addCategory" required class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                         <option value="banner-design|Banner Design">🎨 Banner Design</option>
-                        <option value="feeds-carousel|Design Feeds">📱 Design Feeds</option>
+                        <option value="social-media|Social Media">📱 Social Media</option>
+                        <option value="background-zoom|Background Zoom">🖼️ Background Zoom</option>
                         <option value="ppt-design|Slide Presentasi PPT">📊 Slide Presentasi PPT</option>
                         <option value="poster-infografis|Poster & Infografis">🖼️ Poster & Infografis</option>
                         <option value="idcard-lanyard|Lanyard & ID Card">🪪 Lanyard & ID Card</option>
@@ -532,10 +535,18 @@
             const categoryAliases = {
                 'banner': 'banner-design',
                 'spanduk': 'banner-design',
+                'social': 'social-media',
+                'socialmedia': 'social-media',
+                'social-media': 'social-media',
+                'feeds': 'social-media',
+                'carousel': 'social-media',
+                'feeds-carousel': 'social-media',
+                'zoom': 'background-zoom',
+                'background': 'background-zoom',
+                'backgroundzoom': 'background-zoom',
+                'background-zoom': 'background-zoom',
                 'lanyard': 'idcard-lanyard',
                 'idcard': 'idcard-lanyard',
-                'feeds': 'feeds-carousel',
-                'carousel': 'feeds-carousel',
                 'ppt': 'ppt-design',
                 'presentasi': 'ppt-design',
                 'poster': 'poster-infografis',
@@ -582,7 +593,7 @@
         function filterAndSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filtered = portfolioData.filter(item => {
-                const matchCat = (currentCategory === 'all') || (item.category === currentCategory);
+                const matchCat = (currentCategory === 'all') || (item.category === currentCategory) || (currentCategory === 'social-media' && item.category === 'feeds-carousel');
                 const matchSearch = item.title.toLowerCase().includes(query) || 
                                     item.desc.toLowerCase().includes(query) || 
                                     item.tools.some(t => t.toLowerCase().includes(query));
@@ -662,51 +673,51 @@
         function openAddModal() { document.getElementById('addModal').classList.remove('hidden'); }
         function closeAddModal() { document.getElementById('addModal').classList.add('hidden'); }
 
-function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        // Jika file PDF, langsung baca tanpa kompresi
-        if (file.type.includes('pdf')) {
-            const reader = new FileReader();
-            reader.onload = () => resolve({ name: file.name, type: file.type, base64: reader.result });
-            reader.onerror = error => reject(error);
-            reader.readAsDataURL(file);
-            return;
-        }
-
-        // Jika gambar (PNG/JPG), kompres skala & kualitasnya secara otomatis
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = (event) => {
-            const img = new Image();
-            img.src = event.target.result;
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                const MAX_WIDTH = 1200; // Batas lebar maksimal gambar
-                let width = img.width;
-                let height = img.height;
-
-                if (width > MAX_WIDTH) {
-                    height = Math.round((height * MAX_WIDTH) / width);
-                    width = MAX_WIDTH;
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                // Jika file PDF, langsung baca tanpa kompresi
+                if (file.type.includes('pdf')) {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve({ name: file.name, type: file.type, base64: reader.result });
+                    reader.onerror = error => reject(error);
+                    reader.readAsDataURL(file);
+                    return;
                 }
 
-                canvas.width = width;
-                canvas.height = height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0, width, height);
+                // Jika gambar (PNG/JPG), kompres skala & kualitasnya secara otomatis
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 1200; // Batas lebar maksimal gambar
+                        let width = img.width;
+                        let height = img.height;
 
-                // Kompres gambar menjadi JPEG dengan kualitas 75% (sangat ringan & cepat)
-                const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
-                resolve({ 
-                    name: file.name.replace(/\.[^/.]+$/, "") + ".jpg", 
-                    type: 'image/jpeg', 
-                    base64: compressedBase64 
-                });
-            };
-        };
-        reader.onerror = error => reject(error);
-    });
-}
+                        if (width > MAX_WIDTH) {
+                            height = Math.round((height * MAX_WIDTH) / width);
+                            width = MAX_WIDTH;
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        // Kompres gambar menjadi JPEG dengan kualitas 75% (sangat ringan & cepat)
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
+                        resolve({ 
+                            name: file.name.replace(/\.[^/.]+$/, "") + ".jpg", 
+                            type: 'image/jpeg', 
+                            base64: compressedBase64 
+                        });
+                    };
+                };
+                reader.onerror = error => reject(error);
+            });
+        }
 
         async function submitNewPorto(e) {
             e.preventDefault();
