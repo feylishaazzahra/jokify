@@ -369,10 +369,12 @@
         
         let portfolioData = [];
         let currentCategory = 'all';
+        let isAdminMode = false;
 
         function checkAdminAccess() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('admin') === 'true' || window.location.hash === '#admin') {
+                isAdminMode = true;
                 document.getElementById('adminAddBtn').classList.remove('hidden');
             }
         }
@@ -383,7 +385,9 @@
             logoClickCount++;
             clearTimeout(logoClickTimer);
             if (logoClickCount >= 3) {
+                isAdminMode = !isAdminMode;
                 document.getElementById('adminAddBtn').classList.toggle('hidden');
+                renderCards(portfolioData); // Re-render untuk menampilkan/menyembunyikan tombol hapus
                 logoClickCount = 0;
             } else {
                 logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 1000);
@@ -495,6 +499,13 @@
                     `;
                 }
 
+                // Tombol Hapus Portofolio (Hanya Muncul jika Mode Admin Aktif)
+                const deleteBtnHtml = isAdminMode ? `
+                    <button onclick="deletePorto('${item.id}', '${item.title.replace(/'/g, "\\'")}')" class="bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition-colors" title="Hapus Portofolio">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                ` : '';
+
                 grid.innerHTML += `
                     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                         <div>
@@ -520,10 +531,37 @@
                             <a href="${waUrl}" target="_blank" class="flex-1 bg-jokify-blue hover:bg-sky-700 text-white text-xs font-bold py-2.5 rounded-xl transition-colors text-center inline-flex items-center justify-center gap-1">
                                 <i class="fa-brands fa-whatsapp text-sm"></i> Pesan
                             </a>
+                            ${deleteBtnHtml}
                         </div>
                     </div>
                 `;
             });
+        }
+
+        async function deletePorto(id, title) {
+            const password = prompt(`Masukkan Password Admin untuk menghapus "${title}":`);
+            if (!password) return;
+
+            if (!confirm(`Yakin ingin menghapus permanent "${title}" dari Google Sheet?`)) return;
+
+            try {
+                const payload = { action: 'delete', id: id, password: password };
+                const res = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await res.json();
+                if (result.result === 'success') {
+                    alert("Berhasil menghapus portofolio!");
+                    fetchFromGoogleSheets();
+                } else {
+                    alert("Gagal menghapus: " + (result.message || "Password salah."));
+                }
+            } catch (err) {
+                alert("Terjadi kesalahan saat menghapus data.");
+                console.error(err);
+            }
         }
 
         function applyUrlFilter() {
@@ -680,7 +718,6 @@
 
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
-                // Jika file PDF, langsung baca tanpa kompresi
                 if (file.type.includes('pdf')) {
                     const reader = new FileReader();
                     reader.onload = () => resolve({ name: file.name, type: file.type, base64: reader.result });
@@ -689,7 +726,6 @@
                     return;
                 }
 
-                // Jika gambar (PNG/JPG), kompres skala & kualitasnya secara otomatis
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = (event) => {
@@ -697,7 +733,7 @@
                     img.src = event.target.result;
                     img.onload = () => {
                         const canvas = document.createElement('canvas');
-                        const MAX_WIDTH = 1200; // Batas lebar maksimal gambar
+                        const MAX_WIDTH = 1200;
                         let width = img.width;
                         let height = img.height;
 
@@ -711,7 +747,6 @@
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, width, height);
 
-                        // Kompres gambar menjadi JPEG dengan kualitas 75% (sangat ringan & cepat)
                         const compressedBase64 = canvas.toDataURL('image/jpeg', 0.75);
                         resolve({ 
                             name: file.name.replace(/\.[^/.]+$/, "") + ".jpg", 
