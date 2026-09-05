@@ -126,7 +126,7 @@
                     <h3 class="font-bold text-lg text-jokify-navy dark:text-white mb-3">Design & Visuals</h3>
                     <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                         <li>• Social Media & Microblog</li>
-                        <li>• Custom Background Zoom</li>
+                        <li>• Custom Background Zoom & Twibbon</li>
                         <li>• Banner Design & Header Visual</li>
                         <li>• Poster & Infografis Educative</li>
                         <li>• Lanyard, ID Card & Event Kit</li>
@@ -176,7 +176,7 @@
             </div>
 
             <div class="max-w-xl mx-auto mb-6">
-                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Banner, Background Zoom, Social Media, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
+                <input type="text" id="searchInput" placeholder="🔍 Ketik pencarian: Banner, Background Zoom, Twibbon, Social Media, DFD, SPSS..." class="w-full px-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue transition-all shadow-sm">
             </div>
 
             <div class="flex items-center gap-2 overflow-x-auto pb-4 justify-start scrollbar-thin px-2" id="filterContainer">
@@ -184,6 +184,7 @@
                 <button onclick="setFilter('banner-design')" data-cat="banner-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🎨 Banner Design</button>
                 <button onclick="setFilter('social-media')" data-cat="social-media" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📱 Social Media</button>
                 <button onclick="setFilter('background-zoom')" data-cat="background-zoom" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🖼️ Background Zoom</button>
+                <button onclick="setFilter('twibbon')" data-cat="twibbon" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🎫 Twibbon</button>
                 <button onclick="setFilter('ppt-design')" data-cat="ppt-design" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">📊 Slide Presentasi PPT</button>
                 <button onclick="setFilter('poster-infografis')" data-cat="poster-infografis" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🖼️ Poster & Infografis</button>
                 <button onclick="setFilter('idcard-lanyard')" data-cat="idcard-lanyard" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600">🪪 Lanyard & ID Card</button>
@@ -292,7 +293,7 @@
             <form id="addPortoForm" onsubmit="submitNewPorto(event)" class="p-6 space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Judul Karya / Proyek</label>
-                    <input type="text" id="addTitle" required placeholder="Contoh: Banner Visual Inside Out" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
+                    <input type="text" id="addTitle" required placeholder="Contoh: Twibbon Wisuda / Event Kampus" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-jokify-blue">
                 </div>
 
                 <div>
@@ -301,6 +302,7 @@
                         <option value="banner-design|Banner Design">🎨 Banner Design</option>
                         <option value="social-media|Social Media">📱 Social Media</option>
                         <option value="background-zoom|Background Zoom">🖼️ Background Zoom</option>
+                        <option value="twibbon|Twibbon">🎫 Twibbon</option>
                         <option value="ppt-design|Slide Presentasi PPT">📊 Slide Presentasi PPT</option>
                         <option value="poster-infografis|Poster & Infografis">🖼️ Poster & Infografis</option>
                         <option value="idcard-lanyard|Lanyard & ID Card">🪪 Lanyard & ID Card</option>
@@ -545,6 +547,9 @@
                 'background': 'background-zoom',
                 'backgroundzoom': 'background-zoom',
                 'background-zoom': 'background-zoom',
+                'twibbon': 'twibbon',
+                'bingkai': 'twibbon',
+                'frame': 'twibbon',
                 'lanyard': 'idcard-lanyard',
                 'idcard': 'idcard-lanyard',
                 'ppt': 'ppt-design',
