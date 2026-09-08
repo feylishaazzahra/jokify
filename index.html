@@ -44,7 +44,7 @@
     <!-- ================= NAVBAR ================= -->
     <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div id="logoTrigger" class="flex items-center gap-3 cursor-pointer select-none">
+            <div id="logoTrigger" onclick="setFilter('all')" class="flex items-center gap-3 cursor-pointer select-none">
                 <picture>
                     <source srcset="assets/logojokify-terang.png" media="(prefers-color-scheme: dark)">
                     <img src="assets/logojokify.png" alt="Jokify Logo" class="h-10 sm:h-12 w-auto object-contain">
@@ -56,10 +56,10 @@
             </div>
 
             <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
-                <a href="#about" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Tentang</a>
-                <a href="#skills" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Layanan</a>
+                <a href="#about" onclick="setFilter('all')" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Tentang</a>
+                <a href="#skills" onclick="setFilter('all')" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Layanan</a>
                 <a href="#katalog" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Katalog Works</a>
-                <a href="#alur" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Alur Kerja</a>
+                <a href="#alur" onclick="setFilter('all')" class="hover:text-jokify-navy dark:hover:text-white transition-colors">Alur Kerja</a>
             </nav>
 
             <div class="flex items-center gap-2">
@@ -169,10 +169,13 @@
 
         <!-- 2. INTERACTIVE CATALOG & SEARCH -->
         <section id="katalog" class="scroll-mt-24">
-            <div class="text-center max-w-2xl mx-auto mb-8">
-                <span class="text-xs font-bold text-jokify-orange tracking-wider uppercase">Interactive Catalog</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy dark:text-white mt-1">Galeri & Contoh Portofolio</h2>
-                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Pilih kategori spesifik atau ketik kata kunci di bawah.</p>
+            <!-- Header Dinamis (Akan Berubah saat Mode Katalog Khusus) -->
+            <div id="katalogHeaderContainer">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-xs font-bold text-jokify-orange tracking-wider uppercase">Interactive Catalog</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy dark:text-white mt-1">Galeri & Contoh Portofolio</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Pilih kategori spesifik atau ketik kata kunci di bawah.</p>
+                </div>
             </div>
 
             <div class="max-w-xl mx-auto mb-6">
@@ -387,7 +390,7 @@
             if (logoClickCount >= 3) {
                 isAdminMode = !isAdminMode;
                 document.getElementById('adminAddBtn').classList.toggle('hidden');
-                renderCards(portfolioData); // Re-render untuk menampilkan/menyembunyikan tombol hapus
+                renderCards(portfolioData);
                 logoClickCount = 0;
             } else {
                 logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 1000);
@@ -499,7 +502,6 @@
                     `;
                 }
 
-                // Tombol Hapus Portofolio (Hanya Muncul jika Mode Admin Aktif)
                 const deleteBtnHtml = isAdminMode ? `
                     <button onclick="deletePorto('${item.id}', '${item.title.replace(/'/g, "\\'")}')" class="bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition-colors" title="Hapus Portofolio">
                         <i class="fa-solid fa-trash"></i>
@@ -609,18 +611,89 @@
 
             if (rawCat) {
                 const targetCat = categoryAliases[rawCat.toLowerCase()] || rawCat;
-                setFilter(targetCat);
-                setTimeout(() => {
-                    const katalogEl = document.getElementById('katalog');
-                    if (katalogEl) katalogEl.scrollIntoView({ behavior: 'smooth' });
-                }, 300);
+                setFilter(targetCat, false);
             } else {
-                renderCards(portfolioData);
+                setFilter('all', false);
             }
         }
 
-        function setFilter(cat) {
+        function setFilter(cat, updateUrl = true) {
             currentCategory = cat;
+            
+            if (updateUrl) {
+                const newUrl = cat === 'all' 
+                    ? window.location.pathname 
+                    : window.location.pathname + '?cat=' + cat;
+                window.history.pushState({path: newUrl}, '', newUrl);
+            }
+
+            const heroEl = document.getElementById('about');
+            const skillsEl = document.getElementById('skills');
+            const alurEl = document.getElementById('alur');
+            const catalogHeaderEl = document.getElementById('katalogHeaderContainer');
+
+            if (cat !== 'all') {
+                // Sembunyikan section homepage saat mode Katalog Khusus
+                if (heroEl) heroEl.classList.add('hidden');
+                if (skillsEl) skillsEl.classList.add('hidden');
+                if (alurEl) alurEl.classList.add('hidden');
+                
+                const catNames = {
+                    'banner-design': '🎨 Banner Design',
+                    'social-media': '📱 Social Media',
+                    'background-zoom': '🖼️ Background Zoom',
+                    'twibbon': '🎫 Twibbon',
+                    'ppt-design': '📊 Slide Presentasi PPT',
+                    'poster-infografis': '🖼️ Poster & Infografis',
+                    'idcard-lanyard': '🪪 Lanyard & ID Card',
+                    'booklet': '📖 Booklet & Modul',
+                    'logo-packaging': '🏷️ Logo & Packaging',
+                    'menu-design': '🍽️ Menu Design',
+                    'it-system': '💻 IT & System',
+                    'video-editing': '🎬 Video Editing',
+                    'olah-data': '📊 Olah Data SPSS'
+                };
+                const currentName = catNames[cat] || cat;
+
+                if (catalogHeaderEl) {
+                    catalogHeaderEl.innerHTML = `
+                        <div class="bg-gradient-to-r from-jokify-navy via-slate-800 to-jokify-blue text-white rounded-3xl p-6 sm:p-8 mb-8 shadow-lg text-center relative overflow-hidden">
+                            <div class="relative z-10">
+                                <span class="text-xs font-bold uppercase tracking-widest text-jokify-amber bg-white/10 px-3 py-1 rounded-full border border-white/20 inline-block mb-3">
+                                    Halaman Katalog Khusus
+                                </span>
+                                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight">${currentName}</h1>
+                                <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-lg mx-auto">
+                                    Berikut adalah kumpulan contoh pengerjaan & portofolio khusus kategori <span class="font-bold text-white">${currentName}</span>.
+                                </p>
+                                <div class="mt-5">
+                                    <button onclick="setFilter('all')" class="bg-white hover:bg-slate-100 text-slate-900 text-xs font-extrabold px-5 py-2.5 rounded-xl shadow transition-all inline-flex items-center gap-2 active:scale-95">
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                        <span>Kembali ke Homepage (Semua Layanan)</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                // Tampilkan kembali semua section di Homepage
+                if (heroEl) heroEl.classList.remove('hidden');
+                if (skillsEl) skillsEl.classList.remove('hidden');
+                if (alurEl) alurEl.classList.remove('hidden');
+
+                if (catalogHeaderEl) {
+                    catalogHeaderEl.innerHTML = `
+                        <div class="text-center max-w-2xl mx-auto mb-8">
+                            <span class="text-xs font-bold text-jokify-orange tracking-wider uppercase">Interactive Catalog</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-jokify-navy dark:text-white mt-1">Galeri & Contoh Portofolio</h2>
+                            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Pilih kategori spesifik atau ketik kata kunci di bawah.</p>
+                        </div>
+                    `;
+                }
+            }
+
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if(btn.dataset.cat === cat) {
                     btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all border bg-jokify-navy dark:bg-jokify-blue text-white border-jokify-navy dark:border-jokify-blue shadow-sm";
@@ -628,6 +701,7 @@
                     btn.className = "filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all border bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600";
                 }
             });
+
             filterAndSearch();
         }
 
