@@ -1,0 +1,211 @@
+/* Brand-first hero: the original logo's colors are unchanged. */
+:root {
+  --hero-surface: #e9e7de;
+  --brand-navy: #002b49;
+  --header-height: 112px;
+  --gutter: clamp(24px, 4vw, 80px);
+}
+.site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  gap: 32px;
+  height: var(--header-height);
+  padding: 16px var(--gutter);
+  color: var(--brand-navy);
+}
+.desktop-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+.desktop-nav > a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+  font-size: clamp(16px, 1.25vw, 22px);
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+}
+.desktop-nav > a:last-child > span:last-child {
+  margin-left: auto;
+  font-size: 24px;
+}
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.desktop-nav > a:hover .nav-dot {
+  background: currentColor;
+}
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 8px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+}
+.menu-toggle > span {
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(-35deg);
+  transition: transform 0.25s;
+}
+.menu-toggle[aria-expanded="true"] > span:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] > span:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  background: var(--ink);
+  color: var(--paper);
+  padding: calc(var(--header-height) + 32px) var(--gutter) 40px;
+  overflow-y: auto;
+}
+.mobile-menu > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ffffff40;
+  font: 600 clamp(40px, 8vw, 90px) / 1.25 var(--display);
+  text-transform: uppercase;
+}
+.mobile-menu > a > span {
+  font: 12px var(--body);
+  color: #bdbcb4;
+}
+.mobile-menu > p {
+  margin-top: 32px;
+  color: #bdbcb4;
+  line-height: 1.5;
+}
+.menu-open .site-header {
+  position: fixed;
+  background: var(--ink);
+  color: var(--paper);
+}
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 600px;
+  height: 100svh;
+  padding: var(--header-height) var(--gutter);
+  background: var(--hero-surface);
+  color: var(--brand-navy);
+  border-bottom: 1px solid #002b4926;
+}
+.hero-title {
+  width: 100%;
+  max-width: 1639px;
+  margin: 0;
+  line-height: 0;
+}
+.hero-title a {
+  display: block;
+}
+.hero-title img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hero-explore {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid #002b4966;
+  border-radius: 50%;
+  font-size: 32px;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.hero-explore:hover {
+  background: var(--brand-navy);
+  color: var(--paper);
+}
+.catalog-mode .site-header {
+  position: relative;
+  background: var(--hero-surface);
+}
+/* One shared page gutter at every size, including wide desktops. */
+.section-pad {
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+@media (max-width: 1000px) {
+  .site-header,
+  .desktop-nav {
+    gap: 24px;
+  }
+  .site-header {
+    grid-template-columns: minmax(0, 1fr) 56px;
+  }
+  .desktop-nav > a {
+    gap: 12px;
+  }
+}
+@media (max-width: 700px) {
+  :root {
+    --header-height: 88px;
+  }
+  .site-header {
+    grid-template-columns: minmax(0, 1fr) 48px;
+    gap: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .desktop-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .desktop-nav > a {
+    font-size: 14px;
+    gap: 8px;
+  }
+  .desktop-nav > a:nth-child(1),
+  .desktop-nav > a:nth-child(3) {
+    display: none;
+  }
+  .desktop-nav > a:last-child > span:last-child {
+    display: none;
+  }
+  .nav-dot {
+    width: 6px;
+    height: 6px;
+  }
+  .hero {
+    height: 80svh;
+    min-height: 480px;
+    max-height: 760px;
+  }
+  .hero-explore {
+    width: 56px;
+    height: 56px;
+    bottom: 24px;
+    font-size: 28px;
+  }
+}
