@@ -1,4 +1,9 @@
 /* Landing-page modules. Catalog/dialog styles remain in site.css. */
+.story .story-track .story-card > img {
+  height: auto;
+  aspect-ratio: 12 / 5;
+  object-fit: contain;
+}
 :root {
   --surface-soft: #e9e7de;
   --surface-warm: #e8ddd1;
