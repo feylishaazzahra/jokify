@@ -234,11 +234,11 @@
 .hero-title {
   position: relative;
   z-index: 1;
-  width: 100%;
-  max-width: 1639px;
+  width: 88%;
+  max-width: 1040px;
   margin: 0;
   line-height: 0;
-  filter: drop-shadow(0 12px 12px #002b490b);
+  mix-blend-mode: multiply;
   animation: wordmark-arrive 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 @keyframes wordmark-arrive {
@@ -253,11 +253,15 @@
 }
 .hero-title a {
   display: block;
+  aspect-ratio: 5 / 1;
+  overflow: hidden;
 }
 .hero-title img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .hero-explore {
   position: absolute;
