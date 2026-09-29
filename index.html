@@ -73,24 +73,77 @@
     </nav>
     <main id="main">
       <section class="hero home-section" id="home" aria-labelledby="heroTitle">
-        <div class="hero-orbit hero-orbit-primary" aria-hidden="true"></div>
-        <div class="hero-orbit hero-orbit-cross" aria-hidden="true"></div>
-        <h1 id="heroTitle" class="hero-title">
-          <a href="#home" id="logoTrigger" aria-label="Jokify beranda"
-            ><img
-              src="assets/brand/hero-banner-hires.jpg"
-              width="3000"
-              height="2250"
-              alt="Jokify"
+        <div class="hero-brand-panel">
+          <div class="hero-orbit hero-orbit-primary" aria-hidden="true"></div>
+          <div class="hero-orbit hero-orbit-cross" aria-hidden="true"></div>
+          <h1 id="heroTitle" class="hero-title">
+            <a href="#home" id="logoTrigger" aria-label="Jokify beranda"
+              ><img
+                src="assets/brand/hero-banner-hires.jpg"
+                width="3000"
+                height="2250"
+                alt="Jokify"
+                fetchpriority="high"
+            /></a>
+          </h1>
+          <a
+            href="#about"
+            class="hero-explore"
+            aria-label="Scroll down ke About us"
+            ><span>SCROLL DOWN</span></a
+          >
+        </div>
+        <!-- TEMPLATE: replace these three links and images with the final hero selections. -->
+        <div class="hero-showcase" aria-label="Karya pilihan Jokify">
+          <a
+            class="hero-work hero-work-main"
+            href="?cat=logo-packaging#katalog"
+            aria-label="Lihat karya Dulizzert"
+          >
+            <img
+              src="assets/web/dulizzert-mockup.webp"
+              width="1600"
+              height="1067"
+              alt="Mockup identitas visual Dulizzert"
               fetchpriority="high"
-          /></a>
-        </h1>
-        <a
-          href="#about"
-          class="hero-explore"
-          aria-label="Scroll down ke About us"
-          ><span>SCROLL DOWN</span></a
-        >
+            />
+            <span class="hero-work-caption"
+              ><strong>Dulizzert</strong><span>Brand identity</span></span
+            >
+          </a>
+          <a
+            class="hero-work"
+            href="?cat=menu-design#katalog"
+            aria-label="Lihat karya Waypoint"
+          >
+            <img
+              src="assets/web/waypoint-menu1.webp"
+              width="1080"
+              height="1350"
+              alt="Desain menu Waypoint"
+              loading="eager"
+            />
+            <span class="hero-work-caption"
+              ><strong>Waypoint</strong><span>Menu design</span></span
+            >
+          </a>
+          <a
+            class="hero-work"
+            href="?cat=social-media#katalog"
+            aria-label="Lihat karya FOMO"
+          >
+            <img
+              src="assets/web/fomo-1.webp"
+              width="1080"
+              height="1350"
+              alt="Desain carousel FOMO"
+              loading="eager"
+            />
+            <span class="hero-work-caption"
+              ><strong>FOMO</strong><span>Social media</span></span
+            >
+          </a>
+        </div>
       </section>
       <section
         class="intro section-pad home-section"
