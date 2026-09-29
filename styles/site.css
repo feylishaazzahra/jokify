@@ -223,14 +223,6 @@ textarea:focus-visible {
 }
 .catalog-top h2 {
   font: 600 clamp(28px, 3vw, 43px) / 1 var(--display);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.count {
-  font: 11px var(--body);
-  padding-top: 3px;
-  color: var(--muted);
 }
 .catalog-actions {
   display: flex;

@@ -150,7 +150,6 @@ function renderCatalog() {
       ),
       button("Coba lagi", "button button-dark", loadCatalog),
     );
-    $("catalogCount").textContent = "—";
     return;
   }
   const filtered = filterProjects(
@@ -159,7 +158,6 @@ function renderCatalog() {
     $("searchInput").value,
   );
   const visible = filtered.slice(0, state.limit);
-  $("catalogCount").textContent = String(filtered.length).padStart(2, "0");
   $("catalogStatus").textContent =
     `${visible.length} dari ${filtered.length} karya${state.category === "all" ? "" : ` · ${displayName()}`}`;
   if (!filtered.length) {
@@ -184,23 +182,16 @@ function renderCatalog() {
 
 function updatePageMode() {
   const filtered = state.category !== "all";
-  const catalogCount = $("catalogCount");
   document.body.classList.toggle("catalog-mode", filtered);
   $("backHome").hidden = !filtered;
   $("heroTitle").setAttribute("aria-hidden", String(filtered));
   if (filtered) {
-    $("worksTitle").replaceChildren(
-      document.createTextNode(displayName().toUpperCase()),
-      catalogCount,
-    );
+    $("worksTitle").textContent = displayName().toUpperCase();
     $("worksTitle").setAttribute("role", "heading");
     $("worksTitle").setAttribute("aria-level", "1");
     document.title = `${displayName()} — Jokify Portfolio`;
   } else {
-    $("worksTitle").replaceChildren(
-      document.createTextNode("THE FULL COLLECTION"),
-      catalogCount,
-    );
+    $("worksTitle").textContent = "THE FULL COLLECTION";
     $("worksTitle").removeAttribute("role");
     $("worksTitle").removeAttribute("aria-level");
     document.title = "Jokify — Ideas into Impact.";

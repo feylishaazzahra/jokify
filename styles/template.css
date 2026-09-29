@@ -258,7 +258,7 @@
   align-self: start;
   display: block;
   max-width: 360px;
-  aspect-ratio: 5 / 1;
+  aspect-ratio: 2170 / 725;
   overflow: hidden;
   border-radius: var(--radius-panel);
 }
@@ -447,14 +447,21 @@
   .footer-bottom > span {
     width: 100%;
   }
-  /* No nested horizontal scroller: every filter remains visible. */
+  /* Keep category controls compact without wrapping the mobile layout. */
   .filters {
-    flex-wrap: wrap;
-    overflow: visible;
-    margin-right: 0;
-    padding-right: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: calc(-1 * var(--gutter));
+    padding-right: var(--gutter);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filters::-webkit-scrollbar {
+    display: none;
   }
   .filter-btn {
+    flex-shrink: 0;
     font-size: 10px;
     padding: 10px 12px;
   }

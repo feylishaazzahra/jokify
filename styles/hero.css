@@ -212,7 +212,7 @@
 }
 .hero-title a {
   display: block;
-  aspect-ratio: 1639 / 324;
+  aspect-ratio: 2170 / 725;
   overflow: hidden;
   border-radius: var(--radius-panel);
 }
@@ -249,7 +249,7 @@
   overflow: hidden;
   min-width: 0;
   min-height: 0;
-  background: var(--surface-soft);
+  background: #183b52;
   color: white;
   border-radius: var(--radius-panel);
 }
@@ -273,8 +273,8 @@
   gap: 12px;
   min-height: 48px;
   padding: 10px 14px;
-  background: #002b49e8;
-  color: white;
+  background: white;
+  color: var(--brand-navy);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   transition:
@@ -295,7 +295,8 @@
 }
 .hero-work:hover .hero-work-caption,
 .hero-work:focus-visible .hero-work-caption {
-  background: var(--orange);
+  background: #f2c448;
+  color: white;
 }
 .hero-work.is-switching > img {
   opacity: 0;
@@ -408,7 +409,7 @@
     aspect-ratio: 4 / 3;
   }
   .hero-explore {
-    bottom: 10px;
+    display: none;
   }
   .hero-brand-panel::after {
     width: 80vw;
