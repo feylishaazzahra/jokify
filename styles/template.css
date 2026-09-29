@@ -98,12 +98,7 @@
   height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-top: clamp(48px, 7svh, 72px);
-  padding-bottom: clamp(32px, 5svh, 56px);
-}
-.scroll-enhanced .story-heading {
-  margin-bottom: clamp(20px, 3svh, 32px);
+  justify-content: center;
 }
 .scroll-enhanced .story-clip {
   overflow: clip;
@@ -117,12 +112,11 @@
   flex: 0 0 38vw;
 }
 .scroll-enhanced .story-card > p {
-  min-height: 88px;
-  padding: 18px 0;
+  min-height: 108px;
 }
 .scroll-enhanced .story-card > img,
 .scroll-enhanced .story-device {
-  height: min(29svh, 300px);
+  height: min(34svh, 380px);
 }
 
 .process {
@@ -349,12 +343,9 @@
     transform 0.25s ease;
 }
 .whatsapp-mark {
+  display: block;
   width: clamp(54px, 6vw, 82px);
   height: auto;
-  fill: #25d366;
-}
-.whatsapp-phone {
-  fill: var(--brand-navy);
 }
 .contact-circle:hover {
   background: var(--paper);
