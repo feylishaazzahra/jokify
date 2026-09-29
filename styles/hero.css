@@ -107,7 +107,7 @@
   isolation: isolate;
   overflow: clip;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 65fr) minmax(280px, 35fr);
   align-items: stretch;
   gap: clamp(16px, 2vw, 32px);
   min-height: 680px;
@@ -132,12 +132,10 @@
 .hero-brand-panel {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
   display: grid;
   place-items: center;
   min-width: 0;
-  border: 1px solid #002b4926;
-  background: #f1efe6aa;
 }
 .hero-brand-panel::after {
   content: "";
@@ -196,8 +194,8 @@
 .hero-title {
   position: relative;
   z-index: 1;
-  width: 84%;
-  max-width: 620px;
+  width: 76%;
+  max-width: 760px;
   margin: 0;
   line-height: 0;
   mix-blend-mode: multiply;
@@ -229,9 +227,21 @@
   min-width: 0;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: minmax(0, 1.25fr) minmax(0, 0.75fr);
-  gap: 8px;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-self: center;
+  gap: 12px;
+  height: min(68svh, 620px);
+}
+.hero-showcase-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--brand-navy);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 .hero-work {
   position: relative;
@@ -239,21 +249,17 @@
   overflow: hidden;
   min-width: 0;
   min-height: 0;
-  background: var(--brand-navy);
+  background: #dedcd3;
   color: white;
-}
-.hero-work-main {
-  grid-column: 1 / -1;
 }
 .hero-work > img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.hero-work-main > img {
-  object-position: center 48%;
+  transition:
+    opacity 0.18s ease,
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .hero-work-caption {
   position: absolute;
@@ -268,6 +274,10 @@
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    background 0.2s ease;
 }
 .hero-work-caption strong {
   font: 600 13px/1.2 var(--body);
@@ -283,6 +293,14 @@
 .hero-work:hover .hero-work-caption,
 .hero-work:focus-visible .hero-work-caption {
   background: var(--orange);
+}
+.hero-work.is-switching > img {
+  opacity: 0;
+  transform: scale(1.02);
+}
+.hero-work.is-switching .hero-work-caption {
+  opacity: 0;
+  transform: translateY(6px);
 }
 .hero-explore {
   position: absolute;
@@ -369,7 +387,7 @@
   }
   .hero {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(310px, 42svh) minmax(480px, 58svh);
+    grid-template-rows: minmax(310px, 42svh) auto;
     gap: 12px;
     height: auto;
     min-height: 100svh;
@@ -380,7 +398,11 @@
     min-height: 310px;
   }
   .hero-showcase {
-    min-height: 480px;
+    min-height: 0;
+    height: auto;
+  }
+  .hero-work {
+    aspect-ratio: 4 / 3;
   }
   .hero-explore {
     bottom: 10px;
@@ -400,7 +422,8 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-title,
   .hero-explore > span,
-  .hero-work > img {
+  .hero-work > img,
+  .hero-work-caption {
     animation: none;
     transition: none;
   }

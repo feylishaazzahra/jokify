@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="styles/hero.css" />
     <link rel="stylesheet" href="styles/template.css" />
     <script type="module" src="scripts/app.mjs"></script>
+    <script type="module" src="scripts/hero-rotation.mjs"></script>
     <script type="module" src="scripts/scroll-effects.mjs"></script>
   </head>
   <body>
@@ -93,14 +94,19 @@
             ><span>SCROLL DOWN</span></a
           >
         </div>
-        <!-- TEMPLATE: replace these three links and images with the final hero selections. -->
+        <!-- TEMPLATE: selections live in scripts/hero-rotation.mjs. -->
         <div class="hero-showcase" aria-label="Karya pilihan Jokify">
+          <div class="hero-showcase-label" aria-hidden="true">
+            <span>Selected works</span><span id="heroWorkIndex">01 / 03</span>
+          </div>
           <a
-            class="hero-work hero-work-main"
+            class="hero-work"
+            id="heroWork"
             href="?cat=logo-packaging#katalog"
             aria-label="Lihat karya Dulizzert"
           >
             <img
+              id="heroWorkImage"
               src="assets/web/dulizzert-mockup.webp"
               width="1600"
               height="1067"
@@ -108,39 +114,8 @@
               fetchpriority="high"
             />
             <span class="hero-work-caption"
-              ><strong>Dulizzert</strong><span>Brand identity</span></span
-            >
-          </a>
-          <a
-            class="hero-work"
-            href="?cat=menu-design#katalog"
-            aria-label="Lihat karya Waypoint"
-          >
-            <img
-              src="assets/web/waypoint-menu1.webp"
-              width="1080"
-              height="1350"
-              alt="Desain menu Waypoint"
-              loading="eager"
-            />
-            <span class="hero-work-caption"
-              ><strong>Waypoint</strong><span>Menu design</span></span
-            >
-          </a>
-          <a
-            class="hero-work"
-            href="?cat=social-media#katalog"
-            aria-label="Lihat karya FOMO"
-          >
-            <img
-              src="assets/web/fomo-1.webp"
-              width="1080"
-              height="1350"
-              alt="Desain carousel FOMO"
-              loading="eager"
-            />
-            <span class="hero-work-caption"
-              ><strong>FOMO</strong><span>Social media</span></span
+              ><strong id="heroWorkTitle">Dulizzert</strong
+              ><span id="heroWorkCategory">Brand identity</span></span
             >
           </a>
         </div>

@@ -22,7 +22,7 @@ Tes menggunakan Node test runner tanpa instalasi dependency tambahan. Folder Rea
 
 | Bagian                             | Lokasi                                                                                          |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Hero dan navbar                    | `index.html`, `styles/hero.css`                                                                 |
+| Hero dan navbar                    | `index.html`, `styles/hero.css`; pilihan karya hero di `scripts/hero-rotation.mjs`              |
 | Tentang, empat kartu story, proses | Section `#about`, `[data-horizontal-story]`, `#alur` di `index.html`                            |
 | Empat karya unggulan               | `#featuredGrid` di `index.html`; judul, deskripsi, gambar, dan `data-category-link`             |
 | Layanan dengan media               | `.service-list` di `index.html`                                                                 |
