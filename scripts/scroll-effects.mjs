@@ -9,7 +9,6 @@ const story = document.querySelector("[data-horizontal-story]");
 const stage = story?.querySelector(".story-stage");
 const track = story?.querySelector(".story-track");
 const clip = story?.querySelector(".story-clip");
-const showcase = document.querySelector("[data-expand-panel]");
 const marquee = document.querySelector(".contact-marquee-track");
 const toggle = document.getElementById("motionToggle");
 let userReduced = false;
@@ -22,14 +21,6 @@ function paint() {
   if (story && track) {
     const progress = scrollProgress(story.getBoundingClientRect().top, travel);
     track.style.transform = `translate3d(${-progress * travel}px, 0, 0)`;
-  }
-  if (showcase) {
-    const progress = scrollProgress(
-      showcase.getBoundingClientRect().top,
-      showcase.offsetHeight - innerHeight,
-    );
-    showcase.style.setProperty("--panel-inset", `${(1 - progress) * 6}%`);
-    showcase.style.setProperty("--panel-radius", `${(1 - progress) * 48}px`);
   }
   if (marquee) {
     const top = marquee.parentElement.getBoundingClientRect().top;
@@ -61,8 +52,6 @@ function measure() {
     );
   }
   if (!enabled) {
-    showcase?.style.removeProperty("--panel-inset");
-    showcase?.style.removeProperty("--panel-radius");
     marquee?.style.removeProperty("transform");
   }
   schedulePaint();

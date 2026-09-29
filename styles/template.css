@@ -98,7 +98,12 @@
   height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: clamp(48px, 7svh, 72px);
+  padding-bottom: clamp(32px, 5svh, 56px);
+}
+.scroll-enhanced .story-heading {
+  margin-bottom: clamp(20px, 3svh, 32px);
 }
 .scroll-enhanced .story-clip {
   overflow: clip;
@@ -112,11 +117,12 @@
   flex: 0 0 38vw;
 }
 .scroll-enhanced .story-card > p {
-  min-height: 108px;
+  min-height: 88px;
+  padding: 18px 0;
 }
 .scroll-enhanced .story-card > img,
 .scroll-enhanced .story-device {
-  height: min(34svh, 380px);
+  height: min(29svh, 300px);
 }
 
 .process {
@@ -256,68 +262,6 @@
   z-index: 5;
 }
 
-.showcase-stage {
-  padding: 48px var(--gutter);
-  background: var(--paper);
-}
-.showcase-panel {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  min-height: 620px;
-  padding: 64px;
-  border-radius: 40px;
-  overflow: clip;
-  background: var(--brand-navy);
-  color: var(--paper);
-}
-.showcase-caption h2 {
-  font: 700 clamp(48px, 5vw, 80px) / 1 var(--display);
-  margin: 24px 0 40px;
-}
-.button-light {
-  background: var(--paper);
-  color: var(--brand-navy);
-  border-radius: 32px;
-}
-.showcase-collage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  transform: rotate(-8deg);
-}
-.showcase-collage img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 16px;
-}
-.showcase-collage img:nth-child(2) {
-  height: 400px;
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  margin-top: 56px;
-}
-.scroll-enhanced .showcase {
-  height: 170svh;
-}
-.scroll-enhanced .showcase-stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  padding: 0;
-}
-.scroll-enhanced .showcase-panel {
-  height: 100%;
-  min-height: 0;
-  padding: 64px var(--gutter);
-  border-radius: 0;
-  clip-path: inset(0 var(--panel-inset, 6%) round var(--panel-radius, 48px));
-}
-.scroll-enhanced .showcase-caption {
-  padding-left: 7vw;
-}
 .community {
   background-color: var(--ink);
   background-image:
@@ -397,19 +341,30 @@
   background: var(--brand-navy);
   color: var(--paper);
   font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
-.contact-circle > span {
-  font-size: 72px;
-  line-height: 1;
+.whatsapp-mark {
+  width: clamp(54px, 6vw, 82px);
+  height: auto;
+  fill: #25d366;
+}
+.whatsapp-phone {
+  fill: var(--brand-navy);
 }
 .contact-circle:hover {
   background: var(--paper);
   color: var(--brand-navy);
+  transform: rotate(-3deg);
 }
 .contact-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 24px;
   margin-top: 48px;
   border-top: 1px solid #002b4944;
@@ -512,10 +467,6 @@
   .process-grid h3 {
     font-size: 36px;
   }
-  .showcase-panel {
-    padding: 40px;
-    gap: 32px;
-  }
   .footer-top {
     gap: 32px;
   }
@@ -617,32 +568,6 @@
   .featured-editorial .feature-image {
     padding: 24px;
   }
-  .showcase-stage {
-    padding: 32px var(--gutter);
-  }
-  .showcase-panel {
-    grid-template-columns: 1fr;
-    padding: 32px 24px;
-    min-height: 0;
-    border-radius: 24px;
-  }
-  .showcase-caption h2 {
-    font-size: 46px;
-  }
-  .showcase-caption .button {
-    font-size: 11px;
-    gap: 16px;
-  }
-  .showcase-collage {
-    gap: 12px;
-  }
-  .showcase-collage img {
-    height: 32vw;
-  }
-  .showcase-collage img:nth-child(2) {
-    height: 52vw;
-    margin-top: 24px;
-  }
   .community .display-heading {
     font-size: clamp(52px, 12.5vw, 88px);
   }
@@ -685,8 +610,8 @@
     gap: 8px;
     align-self: end;
   }
-  .contact-circle > span {
-    font-size: 48px;
+  .whatsapp-mark {
+    width: 48px;
   }
   .contact-bottom {
     flex-direction: column;
