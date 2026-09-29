@@ -184,20 +184,22 @@ function renderCatalog() {
 
 function updatePageMode() {
   const filtered = state.category !== "all";
+  const catalogCount = $("catalogCount");
   document.body.classList.toggle("catalog-mode", filtered);
   $("backHome").hidden = !filtered;
   $("heroTitle").setAttribute("aria-hidden", String(filtered));
   if (filtered) {
-    $("worksTitle").textContent = displayName().toUpperCase();
+    $("worksTitle").replaceChildren(
+      document.createTextNode(displayName().toUpperCase()),
+      catalogCount,
+    );
     $("worksTitle").setAttribute("role", "heading");
     $("worksTitle").setAttribute("aria-level", "1");
-    $("worksTitle").classList.add("is-visible");
     document.title = `${displayName()} — Jokify Portfolio`;
   } else {
     $("worksTitle").replaceChildren(
-      document.createTextNode("SELECTED"),
-      element("br"),
-      element("span", "orange", "WORKS."),
+      document.createTextNode("THE FULL COLLECTION"),
+      catalogCount,
     );
     $("worksTitle").removeAttribute("role");
     $("worksTitle").removeAttribute("aria-level");
