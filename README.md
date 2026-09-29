@@ -35,6 +35,16 @@ Tes menggunakan Node test runner tanpa instalasi dependency tambahan. Folder Rea
 
 Cari komentar `TEMPLATE:` untuk section yang disiapkan agar kontennya bisa diganti. Karya unggulan bersifat editorial/manual; mengubah Google Sheets tidak otomatis mengganti empat kartu unggulan.
 
+### Mode preview katalog
+
+Kolom Google Sheets `previewMode` bersifat opsional. Karya lama otomatis memakai `contain`, sehingga gambar utuh tampil di frame 4:3 tanpa crop. Gunakan nilai berikut hanya saat perlu:
+
+| Nilai | Perilaku |
+| --- | --- |
+| `contain` | Default; gambar utuh dengan ruang napas di sekelilingnya. |
+| `cover` | Memenuhi frame; cocok untuk foto horizontal yang aman dipotong. |
+| `portrait` | Gambar utuh dengan lebar lebih ramping di tengah frame; cocok untuk poster atau carousel. |
+
 ## Logo dan gambar
 
 `assets/brand/logo-nobg.png` merupakan salinan identik dari `.LOGO/logo-nobg.png` milik Jokify. `assets/web/logo-wordmark.webp` adalah versi lossless dengan ruang transparan luar dipangkas; bentuk dan warna logo tidak digambar ulang. Hero memakai latar krem agar semua warna logo terbaca.
@@ -58,7 +68,7 @@ Perubahan disiapkan untuk review lokal. Tidak ada push, merge, atau deployment k
 
 ## Verifikasi redesign
 
-- 11 tes Node: parser katalog, alias kategori, pencarian, URL media, endpoint read-only, batas progres scroll.
+- 12 tes Node: parser katalog, mode preview, alias kategori, pencarian, URL media, endpoint read-only, batas progres scroll.
 - Browser: layout 320, 768, 1024, 1440px; padding kiri-kanan sama; tanpa overflow horizontal halaman.
 - Browser: filter Menu, state kosong dan reset, pagination 9 ke 18 karya, dialog dan pergantian gambar, Escape mengembalikan fokus, menu mobile dengan keyboard, mode minim animasi.
 - Referensi visual: https://ariyana-studio.webflow.io/.

@@ -66,6 +66,25 @@ test("Parser respects labeled columns even if rearranged", () => {
   });
   assert.equal(parseCatalog(text)[0].id, "p1");
 });
+test("Catalog preserves an optional preview mode for mixed image ratios", () => {
+  const text = envelope({
+    status: "ok",
+    table: {
+      cols: ["title", "images", "previewMode", "id"].map((label) => ({ label })),
+      rows: [row(["Poster", "assets/poster.png", "portrait", "p1"])],
+    },
+  });
+  const [project] = parseCatalog(text);
+  assert.equal(project.previewMode, "portrait");
+  assert.equal(
+    normalizeProjects([{ ...project, previewMode: "cover" }])[0].previewMode,
+    "cover",
+  );
+  assert.equal(
+    normalizeProjects([{ ...project, previewMode: "zoom" }])[0].previewMode,
+    "contain",
+  );
+});
 test("Parser rejects login HTML and Google error envelopes", () => {
   assert.throws(() => parseCatalog("<html>Sign in</html>"));
   assert.throws(() => parseCatalog(envelope({ status: "error" })));

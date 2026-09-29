@@ -83,6 +83,7 @@ function createImage(url, title, eager = false) {
 function createCard(project) {
   const card = element("article", "project-card");
   const cover = button("", "project-cover", () => openProject(project));
+  cover.classList.add(`project-cover--${project.previewMode}`);
   cover.setAttribute("aria-label", `Lihat detail ${project.title}`);
   const coverUrl =
     project.images.find((url) => !isPdf(url)) || project.images[0];

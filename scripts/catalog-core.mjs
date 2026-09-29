@@ -113,6 +113,12 @@ export function imageUrl(url) {
     ? `https://lh3.googleusercontent.com/d/${id}`
     : safe;
 }
+export function previewMode(value = "") {
+  const mode = String(value).toLowerCase().trim();
+  return ["contain", "cover", "portrait"].includes(mode)
+    ? mode
+    : "contain";
+}
 export function normalizeProjects(raw) {
   if (!Array.isArray(raw)) throw new Error("Invalid catalog");
   return raw
@@ -129,6 +135,7 @@ export function normalizeProjects(raw) {
       tools: Array.isArray(item.tools) ? item.tools.map(String) : [],
       desc: String(item.desc || ""),
       estTime: String(item.estTime || "Diskusikan brief"),
+      previewMode: previewMode(item.previewMode),
     }))
     .filter((item) => item.images.length);
 }
