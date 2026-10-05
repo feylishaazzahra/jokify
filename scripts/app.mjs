@@ -1,5 +1,6 @@
 import {
   categories,
+  adminModeFromUrl,
   canonicalCategory,
   categoryFromUrl,
   filterProjects,
@@ -567,9 +568,7 @@ $("addPortoForm").addEventListener("submit", async (event) => {
 });
 
 updatePageMode();
-state.admin =
-  new URL(location.href).searchParams.get("admin") === "true" ||
-  location.hash === "#admin";
+state.admin = adminModeFromUrl(new URL(location.href));
 $("adminAddBtn").hidden = !state.admin;
 if ("IntersectionObserver" in window && !reducedMotion.matches) {
   document.body.classList.add("motion-ready");

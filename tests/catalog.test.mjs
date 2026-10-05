@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import {
   categoryFromUrl,
+  adminModeFromUrl,
   canonicalCategory,
   filterProjects,
   safeMediaUrl,
@@ -112,6 +113,15 @@ test("Existing category links and aliases resolve correctly", () => {
   );
   assert.equal(categoryFromUrl(new URL("https://jokify.tech/#about")), "all");
   assert.equal(canonicalCategory("<img src=x>"), "all");
+});
+test("Admin mode supports the legacy parameter alias", () => {
+  assert.equal(adminModeFromUrl(new URL("https://jokify.tech/?admin")), true);
+  assert.equal(
+    adminModeFromUrl(new URL("https://jokify.tech/?admin=true")),
+    true,
+  );
+  assert.equal(adminModeFromUrl(new URL("https://jokify.tech/#admin")), true);
+  assert.equal(adminModeFromUrl(new URL("https://jokify.tech/")), false);
 });
 test("Search combines category with multiple words and legacy social categories", () => {
   const projects = [

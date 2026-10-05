@@ -57,6 +57,9 @@ export function categoryFromUrl(url) {
       url.hash.slice(1),
   );
 }
+export function adminModeFromUrl(url) {
+  return url.searchParams.has("admin") || url.hash === "#admin";
+}
 export function filterProjects(projects, category, query) {
   const words = query
     .toLocaleLowerCase("id")
